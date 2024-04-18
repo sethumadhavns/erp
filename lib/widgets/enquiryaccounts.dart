@@ -25,7 +25,7 @@ class Enquiryaccounts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 355.w,
       child: Column(
         children: <Widget>[
@@ -54,7 +54,7 @@ class Enquiryaccounts extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          semibold.reg17(text: name, color: Color(0xFF1E1E1E)),
+                          semibold.reg17(text: name, color: const Color(0xFF1E1E1E)),
                           Gap(10.w),
                           if (editicon != true) medium.reg14(text: code!),
                         ],
@@ -66,7 +66,7 @@ class Enquiryaccounts extends StatelessWidget {
                 ],
               ),
               editicon != true
-                  ? medium.reg12(text: date!, color: Color(0xFF323232))
+                  ? medium.reg12(text: date!, color: const Color(0xFF323232))
                   : IconButton(
                       onPressed: () {},
                       icon: Image.asset(
@@ -82,7 +82,7 @@ class Enquiryaccounts extends StatelessWidget {
             width: 355.w,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.w),
-                color: Color(0xFF367B86).withOpacity(0.08)),
+                color: const Color(0xFF367B86).withOpacity(0.08)),
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 16.w),
               child: Column(
@@ -96,10 +96,10 @@ class Enquiryaccounts extends StatelessWidget {
                             'assets/images/contacticon.png',
                             height: 12.58.h,
                             width: 10.36.w,
-                            color: Color(0xFF367B86),
+                            color: const Color(0xFF367B86),
                           ),
                           Gap(8.35.w),
-                          medium.reg14(text: name2, color: Color(0xFF367B86))
+                          medium.reg14(text: name2, color: const Color(0xFF367B86))
                         ],
                       ),
                       Row(
@@ -108,10 +108,10 @@ class Enquiryaccounts extends StatelessWidget {
                             'assets/images/phoneicon.png',
                             height: 11.76.h,
                             width: 11.76.w,
-                            color: Color(0xFF367B86),
+                            color: const Color(0xFF367B86),
                           ),
                           Gap(6.23.w),
-                          medium.reg14(text: phoneno, color: Color(0xFF367B86))
+                          medium.reg14(text: phoneno, color: const Color(0xFF367B86))
                         ],
                       )
                     ],
@@ -125,7 +125,7 @@ class Enquiryaccounts extends StatelessWidget {
                         width: 13.47.w,
                       ),
                       Gap(8.w),
-                      medium.reg14(text: email, color: Color(0xFF367B86))
+                      medium.reg14(text: email, color: const Color(0xFF367B86))
                     ],
                   )
                 ],
@@ -137,14 +137,14 @@ class Enquiryaccounts extends StatelessWidget {
             width: 355.w,
             child: Chip(
                 backgroundColor: Colors.white,
-                side: BorderSide(width: 1, color: Color(0xFF367B86)),
+                side: const BorderSide(width: 1, color: Color(0xFF367B86)),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
                   52.w,
                 )),
                 padding: EdgeInsets.symmetric(
                     vertical: 17.83.h, horizontal: 148.17.w),
-                labelPadding: EdgeInsets.all(0),
+                labelPadding: const EdgeInsets.all(0),
                 label: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -152,7 +152,7 @@ class Enquiryaccounts extends StatelessWidget {
                       'assets/images/phoneicon.png',
                       height: 14.66.h,
                       width: 14.66.w,
-                      color: Color(0xFF367B86),
+                      color: const Color(0xFF367B86),
                     ),
                     Gap(10.w),
                     semibold.reg16(text: 'Call', color: const Color(0xFF367B86))

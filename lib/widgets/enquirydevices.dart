@@ -12,11 +12,11 @@ class Enquirydevices extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(height:153.08.h ,width: 152.7.w,color: Color(0xFFD9D9D9),),
+        Container(height:153.08.h ,width: 152.7.w,color: const Color(0xFFD9D9D9),),
         Gap(10.1.h),
-        semibold.reg14(text: nameofdevice,color: Color(0xFF000000)),
+        semibold.reg14(text: nameofdevice,color: const Color(0xFF000000)),
         Gap(6.73.h),
-        Chip(side: BorderSide(width: 11.14.w,color: Color(0xFF367B86).withOpacity(0.35)),padding: EdgeInsets.symmetric(horizontal:11.71.w ,vertical: 8.17.h),labelPadding: EdgeInsets.all(0),label: semibold.reg14(text: nameofdevice,color: Color(0xFF367B86)))
+        Chip(side: BorderSide(width: 11.14.w,color: const Color(0xFF367B86).withOpacity(0.35)),padding: EdgeInsets.symmetric(horizontal:11.71.w ,vertical: 8.17.h),labelPadding: const EdgeInsets.all(0),label: semibold.reg14(text: nameofdevice,color: const Color(0xFF367B86)))
       ],
     );
   }
