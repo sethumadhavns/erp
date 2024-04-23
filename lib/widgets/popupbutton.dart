@@ -1,5 +1,5 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/product_widget.dart';
+import 'package:erp_widget_packages/widgets/productdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';

@@ -1,4 +1,4 @@
 library erp_widget_packages;
 
-export 'widgets/product_widget.dart';
+export 'widgets/productdetails.dart';
 export 'widgets/checkbox.dart';

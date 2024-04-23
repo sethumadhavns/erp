@@ -17,12 +17,16 @@ class Clickableicons extends StatefulWidget {
 }
 
 class _ClickableiconsState extends State<Clickableicons> {
-  bool isselected = false;
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         widget.oniconselected(widget.icon);
+        setState(() {
+          widget.isselected!=true;
+        });
+       
       },
       child: Container(
         height: 58.h,

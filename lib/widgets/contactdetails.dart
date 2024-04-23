@@ -2,9 +2,7 @@
 
 import 'package:erp_widget_packages/erp_widget_packages.dart';
 import 'package:erp_widget_packages/widgets/contactdetailsconditions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
@@ -20,6 +18,8 @@ class Contactdetails extends StatefulWidget {
   final bool? call;
   final bool? whatsapp;
   final String? role;
+  final String? validitydate;
+  final Function(int)? selectedbutton;
   const Contactdetails(
       {required this.name,
       required this.email,
@@ -32,6 +32,9 @@ class Contactdetails extends StatefulWidget {
       this.call = false,
       this.whatsapp = false,
       this.role,
+      this.selectedbutton,
+      this.validitydate,
+
       super.key});
 
   @override
@@ -39,13 +42,13 @@ class Contactdetails extends StatefulWidget {
 }
 
 class _ContactdetailsState extends State<Contactdetails> {
-  int? selectedbutton;
+  int? buttonvalue = -1;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
+    return Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(16.w)),
+      
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 35.w),
+        padding: EdgeInsets.all(15),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -54,7 +57,7 @@ class _ContactdetailsState extends State<Contactdetails> {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Container(
+                      Container(//icon
                         height: 44.35.h,
                         width: 44.35.w,
                         decoration: BoxDecoration(
@@ -68,7 +71,7 @@ class _ContactdetailsState extends State<Contactdetails> {
                             )),
                       ),
                       Gap(17.w),
-                      Column(
+                      Column(//nameanddateandrole
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -82,14 +85,14 @@ class _ContactdetailsState extends State<Contactdetails> {
                       ),
                     ],
                   ),
-                  conditions(widget.condition)
+                  conditions(widget.condition,widget.validitydate)//conditions
                 ],
               ),
               Gap(26.4.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Row(
+                  Row(//email
                     children: <Widget>[
                       Image.asset(
                         'assets/images/emailicon.png',
@@ -101,7 +104,7 @@ class _ContactdetailsState extends State<Contactdetails> {
                     ],
                   ),
                   Gap(74.59.w),
-                  Row(
+                  Row(//phone
                     children: <Widget>[
                       Image.asset(
                         'assets/images/phoneicon.png',
@@ -145,116 +148,74 @@ class _ContactdetailsState extends State<Contactdetails> {
                       ),
                   ],
                 ),
+              if (widget.whatsapp == true && widget.call == true)
               Gap(18.h),
               if (widget.whatsapp == true && widget.call == true)
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 
+                Row(//callandwhatsapp
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (selectedbutton == 1) {
-                            selectedbutton = null; 
-                          } else {
-                            selectedbutton = 1;
-                          }
-                        });
-                      },
-                      child:Expanded(
-                        child: Container(
-                            height: 46.66.h,
-                            
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF367B86)),
-                              borderRadius: BorderRadius.circular(52.w),
-                            ),
-                            child: Row(children: <Widget>[ Row(
-                                children: <Widget>[
-                                  Image.asset('assets/images/whatsapp.png',
-                                      height: 14.66.h,
-                                      width: 14.66.w,
-                                      color: selectedbutton == 2
-                                          ? Colors.white
-                                          : Color(0xFF367B86)),
-                                  Gap(10.w),
-                                  semibold.reg16(
-                                      text: 'Whatsapp',
-                                      color: selectedbutton == 2
-                                          ? Colors.white
-                                          : const Color(0xFF367B86))
-                                ],
-                              )],),
-                          ),
-                      )
-                    ),
-                    Gap(10.w),
-                    GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            if (selectedbutton == 2) {
-                              selectedbutton = null;
-                            } else {
-                              selectedbutton = 2;
-                            }
-                          });
-                        },
-                        child: Flexible(
+                    Expanded(
+                      child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              buttonvalue = 1;
+
+                              widget.selectedbutton!(buttonvalue!);
+                            });
+                          },
                           child: Container(
                             height: 46.66.h,
-                           
                             decoration: BoxDecoration(
                               border: Border.all(color: Color(0xFF367B86)),
                               borderRadius: BorderRadius.circular(52.w),
                             ),
-                            child: Row(children: <Widget>[ Row(
-                                children: <Widget>[
-                                  Image.asset('assets/images/whatsapp.png',
-                                      height: 14.66.h,
-                                      width: 14.66.w,
-                                      color: selectedbutton == 2
-                                          ? Colors.white
-                                          : Color(0xFF367B86)),
-                                  Gap(10.w),
-                                  semibold.reg16(
-                                      text: 'Whatsapp',
-                                      color: selectedbutton == 2
-                                          ? Colors.white
-                                          : const Color(0xFF367B86))
-                                ],
-                              )],),
-                          ),
-                        )
-                        // Chip(
-                        //     backgroundColor: selectedbutton == 2
-                        //         ? Color(0xFF367B86)
-                        //         : Colors.white,
-                        //     labelPadding: EdgeInsets.all(0),
-                        //     padding: EdgeInsets.symmetric(
-                        //         vertical: 17.h, horizontal: 34.w),
-                        //     shape: RoundedRectangleBorder(
-                        //         borderRadius: BorderRadius.circular(52.w),
-                        //         side: BorderSide(color: Color(0xFF367B86))),
-                        //     label: Row(
-                        //       children: <Widget>[
-                        //         Image.asset('assets/images/whatsapp.png',
-                        //             height: 14.66.h,
-                        //             width: 14.66.w,
-                        //             color: selectedbutton == 2
-                        //                 ? Colors.white
-                        //                 : Color(0xFF367B86)),
-                        //         Gap(10.w),
-                        //         semibold.reg16(
-                        //             text: 'Whatsapp',
-                        //             color: selectedbutton == 2
-                        //                 ? Colors.white
-                        //                 : const Color(0xFF367B86))
-                        //       ],
-                        //     )),
-
-                        )
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset('assets/images/phoneicon.png',
+                                    height: 14.66.h,
+                                    width: 14.66.w,
+                                    color: Color(0xFF367B86)),
+                                Gap(10.w),
+                                semibold.reg16(
+                                    text: 'Call',
+                                    color: const Color(0xFF367B86))
+                              ],
+                            ),
+                          )),
+                    ),
+                    Gap(10.w),
+                    Expanded(
+                      child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              buttonvalue = 2;
+                              widget.selectedbutton!(buttonvalue!);
+                            });
+                          },
+                          child: Container(
+                            height: 46.66.h,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xFF367B86)),
+                              borderRadius: BorderRadius.circular(52.w),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset('assets/images/whatsapp.png',
+                                    height: 14.66.h,
+                                    width: 14.66.w,
+                                    color: Color(0xFF367B86)),
+                                Gap(10.w),
+                                semibold.reg16(
+                                    text: 'Whatsapp',
+                                    color: const Color(0xFF367B86))
+                              ],
+                            ),
+                          )),
+                    )
                   ],
                 ),
-              Gap(26.h),
+              Gap(18.42.h),
               if (widget.remarks != null)
                 Column(
                   children: <Widget>[
@@ -263,49 +224,35 @@ class _ContactdetailsState extends State<Contactdetails> {
                     medium.reg16(text: widget.remarks ?? ''),
                   ],
                 ),
+                if (widget.call == true && widget.whatsapp == false)
+                Gap(18.h),
               if (widget.call == true && widget.whatsapp == false)
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      if (selectedbutton == 3) {
-                        selectedbutton = null;
-                      } else {
-                        selectedbutton = 3;
-                      }
-                    });
-                  },
-                  child: Chip(
-                      backgroundColor: selectedbutton == 3
-                          ? Color(0xFF367B86)
-                          : Colors.white,
-                      side: BorderSide(width: 1, color: Color(0xFF367B86)),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                        52.w,
-                      )),
-                      padding: EdgeInsets.symmetric(
-                          vertical: 17.83.h, horizontal: 148.17.w),
-                      labelPadding: EdgeInsets.all(0),
-                      label: Row(
+                GestureDetector(//callonly
+                    onTap: () {
+                      setState(() {
+                        buttonvalue = 1;
+                        widget.selectedbutton!(buttonvalue!);
+                      });
+                    },
+                    child: Container(
+                      height: 46.66.h,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xFF367B86)),
+                        borderRadius: BorderRadius.circular(52.w),
+                      ),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Image.asset(
-                            'assets/images/phoneicon.png',
-                            height: 14.66.h,
-                            width: 14.66.w,
-                            color: selectedbutton == 3
-                                ? Colors.white
-                                : Color(0xFF367B86),
-                          ),
+                          Image.asset('assets/images/phoneicon.png',
+                              height: 14.66.h,
+                              width: 14.66.w,
+                              color: Color(0xFF367B86)),
                           Gap(10.w),
                           semibold.reg16(
-                              text: 'Call',
-                              color: selectedbutton == 3
-                                  ? Colors.white
-                                  : const Color(0xFF367B86))
+                              text: 'Call', color: const Color(0xFF367B86))
                         ],
-                      )),
-                )
+                      ),
+                    ))
             ]),
       ),
     );

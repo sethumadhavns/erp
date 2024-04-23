@@ -2,7 +2,7 @@
 
 import 'package:accordion/accordion.dart';
 import 'package:erp_widget_packages/widgets/dropdownboxwithtitle.dart';
-import 'package:erp_widget_packages/widgets/product_widget.dart';
+import 'package:erp_widget_packages/widgets/productdetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
