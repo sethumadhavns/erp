@@ -56,7 +56,7 @@ class _TextfieldwithcountrycodeState extends State<Textfieldwithcountrycode> {
                   height: 200.h,
                   child: ValueListenableBuilder<List<String>>(
                     valueListenable: filtereditems,
-                    builder: (context, value, child) => ListView.builder(
+                    builder: (context, value, child) => ListView.builder(padding: EdgeInsets.all(0),
                         itemCount: value.length,
                         itemBuilder: ((context, index) {
                           return InkWell(
@@ -95,66 +95,62 @@ class _TextfieldwithcountrycodeState extends State<Textfieldwithcountrycode> {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Overlay(key:overlaykey ,initialEntries: [ OverlayEntry(builder: (context) => 
-         Column(crossAxisAlignment: CrossAxisAlignment.start,
-         mainAxisAlignment: MainAxisAlignment.start,
-           children: [if(widget.title!=null) medium.reg18(text: widget.title!),
-           if(widget.title!=null)Gap(15.h),
-             Row(mainAxisAlignment: MainAxisAlignment.center,
-             crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 52.h,
-                    width: 83.w,
-                    key: containerkey,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFC1C1C1)),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(16.w),
-                            bottomLeft: Radius.circular(16.w),
-                            topRight: Radius.zero,
-                            bottomRight: Radius.zero)),
-                    child: SizedBox(width: 50,
-                      child: Center(
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(width: 50,
-                              child: TextField(
-                                decoration: InputDecoration(border:InputBorder.none ),
-                                onTap: (){
-                                 showcontainer();
-                                },
-                                controller: countrydropdown,
-                                style: TextStyle(fontSize: 18.sp),
-                              ),
-                            ),SvgPicture.asset('assets/images/dropdownarrow.svg',
-                            height: 6.h,
-                                  width: 12.w,)
-                          ],
-                        ),
-                      ),
+    return Overlay(key:overlaykey ,initialEntries: [ OverlayEntry(canSizeOverlay: true,builder: (context) => 
+       Column(crossAxisAlignment: CrossAxisAlignment.start,
+       mainAxisAlignment: MainAxisAlignment.start,
+         children: [if(widget.title!=null) medium.reg18(text: widget.title!),
+         if(widget.title!=null)Gap(15.h),
+           Row(mainAxisAlignment: MainAxisAlignment.center,
+           crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 52.h,
+                  width: 83.w,
+                  key: containerkey,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFC1C1C1)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(16.w),
+                          bottomLeft: Radius.circular(16.w),
+                          topRight: Radius.zero,
+                          bottomRight: Radius.zero)),
+                  child: SizedBox(width: 50,
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 50,
+                          child: TextField(
+                            decoration: InputDecoration(border:InputBorder.none ),
+                            onTap: (){
+                             showcontainer();
+                            },
+                            controller: countrydropdown,
+                            style: TextStyle(fontSize: 18.sp),
+                          ),
+                        ),SvgPicture.asset('assets/images/dropdownarrow.svg',
+                        height: 6.h,
+                              width: 12.w,)
+                      ],
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      height: 52.h,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xFFC1C1C1)),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.zero,
-                              bottomLeft: Radius.zero,
-                              topRight: Radius.circular(16.w),
-                              bottomRight: Radius.circular(16.w))),
-                    ),
-                  )
-                ],
-              ),
-           ],
-         ),
-      ),],
-        
-      ),
+                ),
+                Expanded(
+                  child: Container(
+                    height: 52.h,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: const Color(0xFFC1C1C1)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.zero,
+                            bottomLeft: Radius.zero,
+                            topRight: Radius.circular(16.w),
+                            bottomRight: Radius.circular(16.w))),
+                  ),
+                )
+              ],
+            ),
+         ],
+       ),
+    ),],
+      
     );
   }
 }

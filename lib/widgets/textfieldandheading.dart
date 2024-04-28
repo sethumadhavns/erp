@@ -113,9 +113,9 @@ class _TextfieldandheadingState extends State<Textfieldandheading> {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Overlay(key: overlaykey, initialEntries: [
-        OverlayEntry(
+    return 
+      Overlay(key: overlaykey, initialEntries: [
+        OverlayEntry(canSizeOverlay: true,
           builder: (context) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -130,55 +130,53 @@ class _TextfieldandheadingState extends State<Textfieldandheading> {
                 decoration: BoxDecoration(
                     border: Border.all(color: const Color(0xFFC1C1C1)),
                     borderRadius: BorderRadius.circular(16.w)),
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20.w, right: 20.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        if (widget.hinttext == null) ...[
-                          medium.reg18(
-                              text: '-', color: const Color(0xFF909090)),
-                          Gap(10.w),
-                        ],
-                        if (widget.dropdownentries == null) ...[
-                          Expanded(
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: widget.hinttext ?? ''),
-                            ),
-                          ),
-                           Gap(10.w),
-                        ],
-                       
-                        if (widget.dropdownentries != null) ...[ Expanded(
-                              child: TextField(
-                            decoration:
-                                const InputDecoration(border: InputBorder.none),
-                            controller: dropdown,
-                            onTap: () {
-                              
-                                showcontainer();
-                              
-                            },
-                          )),SvgPicture.asset(
-                            'assets/images/dropdownarrow.svg',
-                            height: 6.h,
-                            width: 12.w,
-                          )]
-                         
-                       
-                          
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.w, right: 20.w,top: 15.h),
+                  child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      if (widget.hinttext == null) ...[
+                        medium.reg18(
+                            text: '-', color: const Color(0xFF909090)),
+                        Gap(10.w),
                       ],
-                    ),
+                      if (widget.dropdownentries == null) ...[
+                        Flexible(
+                          child: TextField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: widget.hinttext ?? ''),
+                          ),
+                        ),
+                         Gap(10.w),
+                      ],
+                     
+                      if (widget.dropdownentries != null) ...[ Expanded(
+                            child: TextField(
+                          decoration:
+                              const InputDecoration(border: InputBorder.none),
+                          controller: dropdown,
+                          onTap: () {
+                            
+                              showcontainer();
+                            
+                          },
+                        )),SvgPicture.asset(
+                          'assets/images/dropdownarrow.svg',
+                          height: 6.h,
+                          width: 12.w,
+                        )]
+                       
+                     
+                        
+                    ],
                   ),
                 ),
               ),
             ],
           ),
-        ),
-      ]),
+        
+     ) ]
     );
   }
 }
