@@ -9,7 +9,7 @@ class Rectanglebuttons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minWidth: double.infinity),
+      constraints: const BoxConstraints(minWidth: double.infinity),
       
       height: 55.h,
       decoration: BoxDecoration(

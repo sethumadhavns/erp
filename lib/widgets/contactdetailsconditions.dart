@@ -2,7 +2,7 @@ import 'package:erp_widget_packages/erp_widget_packages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum Contactconditions { followuprequired, newcontact ,validitydate,qualified,approved}
+enum Contactconditions { followuprequired, newcontact ,validitydate,qualified,approved,cancelled}
 
 Widget conditions(Contactconditions? condition,String? validitydate) {
   switch (condition) {
@@ -71,6 +71,19 @@ Widget conditions(Contactconditions? condition,String? validitydate) {
               )),
           label: medium.reg12(
               text: 'Approved', color: const Color(0xFF5BB73A)));
+               case Contactconditions.cancelled:
+      return Chip(
+        padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 16.w),
+          labelPadding:const EdgeInsets.all(0),
+          backgroundColor: const Color(0xFF7DF054).withOpacity(0.08),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+              side: BorderSide(
+                width: 0,
+                color: const Color(0xFF7DF054).withOpacity(0.08),
+              )),
+          label: medium.reg12(
+              text: 'Cancelled', color: const Color(0xFFF05454)));
     default:
       return Container();
   }

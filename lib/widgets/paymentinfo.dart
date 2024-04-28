@@ -1,5 +1,4 @@
 import 'package:accordion/accordion.dart';
-import 'package:erp_widget_packages/widgets/dropdownboxwithtitle.dart';
 import 'package:erp_widget_packages/widgets/productdetails.dart';
 import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
 import 'package:flutter/material.dart';
@@ -28,13 +27,13 @@ class _PaymentinfoState extends State<Paymentinfo> {
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Textfieldandheading(title: 'Tax No',dropdownentries: [],),
+              const Textfieldandheading(title: 'Tax No',dropdownentries: [],),
               Gap(20.h),
-             Textfieldandheading(title: 'Payment Term',dropdownentries: [],),
+             const Textfieldandheading(title: 'Payment Term',dropdownentries: [],),
               Gap(20.h),
-              Textfieldandheading(title: 'Payment Term Condition',dropdownentries: [],),
+              const Textfieldandheading(title: 'Payment Term Condition',dropdownentries: [],),
               Gap(20.h),
-             Textfieldandheading(title: 'Currency',dropdownentries: [],),
+             const Textfieldandheading(title: 'Currency',dropdownentries: [],),
             ],
           ))
     ]);

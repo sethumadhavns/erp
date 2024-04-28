@@ -1,5 +1,4 @@
 import 'package:accordion/accordion.dart';
-import 'package:erp_widget_packages/widgets/dropdownboxwithtitle.dart';
 import 'package:erp_widget_packages/widgets/productdetails.dart';
 import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +35,7 @@ class _PaymentinfotwoState extends State<Paymentinfotwo> {
                 Gap(20.h),
                const Textfieldandheading(title: 'Status',dropdownentries: [],),
                 Gap(20.h),
-                const  Textfieldandheading(title: 'Remarks',height: 106,),
+                const  Textfieldandheading(title: 'Remarks',height: 106, dropdownentries: [],),
                 
               ],
             ))
