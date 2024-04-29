@@ -61,7 +61,7 @@ class _LeadmainState extends State<Leadmain> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              medium.reg36(text: 'Leads'),
+              const Text('Leads',style: TextStyle(fontFamily: 'GilroySemibold',fontSize: 36),),
               Gap(15.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
