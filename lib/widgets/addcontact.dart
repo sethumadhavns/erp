@@ -13,20 +13,23 @@ class Addcontact extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Textfieldandheading(
-          title: 'Name',
+          title: 'Coutry',
+          dropdownentries: ['America','usa','india','indonasia','china','Colombia'],
         ),
         Textfieldwithcountrycode(
             title: 'Phone No', countrycode: ['91', '92', '93']),
         Textfieldwithcountrycode(
             title: 'Mobile No', countrycode: ['91', '92', '93']),
+            Textfieldandheading(title: 'City',dropdownentries: ['City1','city2'],),
         Textfieldwithcountrycode(
             title: 'Whatsapp No', countrycode: ['91', '92', '93']),
              Textfieldandheading(
           title: 'Designation',
         ),
          Textfieldandheading(
-          title: 'Remarks',
-          height: 182,
+          title: 'Designation',
+          dropdownentries: ['Owner','Vendor','Seller'],
+          
         ),
       ],
     );

@@ -40,6 +40,8 @@ class _TextfieldwithcountrycodeState extends State<Textfieldwithcountrycode> {
     });
   }
    void showcontainer() {
+    overlayentry?.remove();
+ overlayentry = null;
     final RenderBox textfieldrenderbox =
         containerkey.currentContext!.findRenderObject() as RenderBox;
     final textfieldsize = textfieldrenderbox.size;
