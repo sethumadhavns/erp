@@ -1,23 +1,24 @@
 import 'package:accordion/accordion.dart';
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:erp_widget_packages/widgets/productdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class Inventory extends StatefulWidget {
-  final String onhand;
+  final String onHand;
   final String purchase;
   final String sale;
-  final String reservedproducts;
-  final String sellablequantity;
+  final String reservedProducts;
+  final String sellableQuantity;
 
   const Inventory(
-      {required this.onhand,
+      {required this.onHand,
       required this.purchase,
       required this.sale,
-      required this.reservedproducts,
-      required this.sellablequantity,
+      required this.reservedProducts,
+      required this.sellableQuantity,
       super.key});
 
   @override
@@ -38,13 +39,13 @@ class _InventoryState extends State<Inventory> {
                   headerBorderColor: Colors.white,
                   headerBackgroundColor: Colors.white,
                   headerBackgroundColorOpened:
-                      const Color(0xFF367B86).withOpacity(0.08),
+                      colors.primaryGreenColour.withOpacity(0.08),
                   rightIcon: Icon(Icons.keyboard_arrow_down,
-                      color: const Color(0xFF367B86), size: 25.w),
+                      color: colors.primaryGreenColour, size: 25.w),
                   headerPadding:
                       EdgeInsets.symmetric(vertical: 25.h, horizontal: 20.w),
                   header: medium.reg18(
-                      text: 'Inventory', color: const Color(0xFF367B86)),
+                      text: 'Inventory', color: colors.primaryGreenColour),
                   content: Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
@@ -64,7 +65,7 @@ class _InventoryState extends State<Inventory> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
-                                      widget.onhand,
+                                      widget.onHand,
                                       style: TextStyle(
                                           fontSize: 48.sp,
                                           fontFamily: 'GilroyRegular',
@@ -137,7 +138,7 @@ class _InventoryState extends State<Inventory> {
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Text(
-                                           widget.reservedproducts,
+                                           widget.reservedProducts,
                                           style: TextStyle(
                                               fontSize: 48.sp,
                                               fontFamily: 'GilroyRegular',
@@ -145,7 +146,7 @@ class _InventoryState extends State<Inventory> {
                                         ),
                                         medium.reg15(
                                             text: 'Reserved Products',
-                                            color: const Color(0xFF000000))
+                                            color: Colors.black)
                                       ],
                                     ),
                                   )),
@@ -160,7 +161,7 @@ class _InventoryState extends State<Inventory> {
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Text(
-                                        widget.sellablequantity,
+                                        widget.sellableQuantity,
                                         style: TextStyle(
                                             fontSize: 48.sp,
                                             fontFamily: 'GilroyRegular',
@@ -168,7 +169,7 @@ class _InventoryState extends State<Inventory> {
                                       ),
                                       medium.reg15(
                                           text: 'Sellable Quantity',
-                                          color: const Color(0xFF000000))
+                                          color: Colors.black)
                                     ],
                                   ),
                                 ),

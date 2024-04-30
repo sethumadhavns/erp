@@ -1,18 +1,20 @@
 import 'package:accordion/accordion.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:erp_widget_packages/widgets/productdetails.dart';
 import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-class Paymentinfo extends StatefulWidget {
-  const Paymentinfo({super.key});
+class PaymentInfo extends StatefulWidget {
+  const PaymentInfo({super.key});
 
   @override
-  State<Paymentinfo> createState() => _PaymentinfoState();
+  State<PaymentInfo> createState() => _PaymentInfoState();
 }
 
-class _PaymentinfoState extends State<Paymentinfo> {
+class _PaymentInfoState extends State<PaymentInfo> {
   @override
   Widget build(BuildContext context) {
     return Accordion(contentBorderColor: Colors.white, children: [
@@ -21,19 +23,36 @@ class _PaymentinfoState extends State<Paymentinfo> {
           headerBackgroundColor: Colors.white,
           header:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            medium.reg20(text: 'Payment Info', color: const Color(0xFF367B86)),
-            const Icon(Icons.arrow_drop_down, color: Color(0xFF367B86)),
+            medium.reg20(text: 'Payment Info', color: colors.primaryGreenColour),
+            SvgPicture.asset(
+              images.dropDownArrow,
+              height: 6.04.h,
+              width: 12.09.h,
+              color: colors.primaryGreenColour,
+            )
           ]),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const Textfieldandheading(title: 'Tax No',dropdownentries: [],),
+              const TextFieldAndHeading(
+                title: 'Tax No',
+                dropDownEntries: [],
+              ),
               Gap(20.h),
-             const Textfieldandheading(title: 'Payment Term',dropdownentries: [],),
+              const TextFieldAndHeading(
+                title: 'Payment Term',
+                dropDownEntries: [],
+              ),
               Gap(20.h),
-              const Textfieldandheading(title: 'Payment Term Condition',dropdownentries: [],),
+              const TextFieldAndHeading(
+                title: 'Payment Term Condition',
+                dropDownEntries: [],
+              ),
               Gap(20.h),
-             const Textfieldandheading(title: 'Currency',dropdownentries: [],),
+              const TextFieldAndHeading(
+                title: 'Currency',
+                dropDownEntries: [],
+              ),
             ],
           ))
     ]);

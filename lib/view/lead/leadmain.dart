@@ -1,4 +1,3 @@
-import 'package:erp_widget_packages/erp_widget_packages.dart';
 import 'package:erp_widget_packages/widgets/clickableicons.dart';
 import 'package:erp_widget_packages/widgets/contactdetails.dart';
 import 'package:erp_widget_packages/widgets/searchwidget.dart';
@@ -72,7 +71,7 @@ class _LeadmainState extends State<Leadmain> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(70.w)),
-                      child: const Searchwidget(),
+                      child: const SearchWidget(),
                     ),
                   ),
                   Gap(10.w),
@@ -80,7 +79,7 @@ class _LeadmainState extends State<Leadmain> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16.w)),
-                      child: const Sortbutton()),
+                      child: const SortButton()),
                 ],
               ),
               Gap(20.91.h),
@@ -89,10 +88,10 @@ class _LeadmainState extends State<Leadmain> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(bottom: 8.h),
-                      child: const Contactdetails(
+                      child: const ContactDetails(
                           name: 'Jesta',
                           email: 'demo@gmail.com',
-                          landphone: '0187 2551998',
+                          landPhone: '0187 2551998',
                           whatsapp: true,
                           call: true,
                           location: 'Kerala,India',
@@ -105,7 +104,7 @@ class _LeadmainState extends State<Leadmain> {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Addbutton(),
+                  AddButton(),
                 ],
               )
             ],
@@ -122,37 +121,37 @@ class _LeadmainState extends State<Leadmain> {
               padding: EdgeInsets.only(left: 10.w, right: 10.w),
               child: Row(
                 children: <Widget>[
-                  Clickableicons(
+                  ClickableIcons(
                       icon: 'iconone',
-                      isselected: selectedicon == 'iconone',
-                      oniconselected: (icon) {
+                      isSelected: selectedicon == 'iconone',
+                      onIconSelected: (icon) {
                         setState(() {
                           selectedicon = icon;
                         });
                       }),
                   Gap(40.w),
-                  Clickableicons(
+                  ClickableIcons(
                       icon: 'icontwo',
-                      isselected: selectedicon == 'icontwo',
-                      oniconselected: (icon) {
+                      isSelected: selectedicon == 'icontwo',
+                      onIconSelected: (icon) {
                         setState(() {
                           selectedicon = icon;
                         });
                       }),
                   Gap(40.w),
-                  Clickableicons(
+                  ClickableIcons(
                       icon: 'iconthree',
-                      isselected: selectedicon == 'iconthree',
-                      oniconselected: (icon) {
+                      isSelected: selectedicon == 'iconthree',
+                      onIconSelected: (icon) {
                         setState(() {
                           selectedicon = icon;
                         });
                       }),
                   Gap(40.w),
-                  Clickableicons(
+                  ClickableIcons(
                       icon: 'iconfour',
-                      isselected: selectedicon == 'iconfour',
-                      oniconselected: (icon) {
+                      isSelected: selectedicon == 'iconfour',
+                      onIconSelected: (icon) {
                         setState(() {
                           selectedicon = icon;
                         });

@@ -1,6 +1,8 @@
-
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:erp_widget_packages/widgets/radiobutton.dart';
+import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
@@ -11,58 +13,57 @@ import 'package:accordion/accordion.dart';
 import 'package:gap/gap.dart';
 import 'providers.dart';
 
-class Basicdetailstwo extends StatefulWidget {
- 
-
-  const Basicdetailstwo(
-      {
-      super.key});
+class BasicDetailsTwo extends StatefulWidget {
+  const BasicDetailsTwo({super.key});
 
   @override
-  State<Basicdetailstwo> createState() => _BasicdetailstwoState();
+  State<BasicDetailsTwo> createState() => _BasicDetailsTwoState();
 }
 
-class _BasicdetailstwoState extends State<Basicdetailstwo> {
- 
-String? _selectedOption;
+class _BasicDetailsTwoState extends State<BasicDetailsTwo> {
+  String? selectedOption;
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<Providers>(create: (context) => Providers(),child:
-      SingleChildScrollView(
+    return ChangeNotifierProvider<Providers>(
+      create: (context) => Providers(),
+      child: SingleChildScrollView(
         child: Accordion(contentBorderColor: Colors.white, children: [
           AccordionSection(
               isOpen: true,
-              
-              rightIcon: Icon(Icons.keyboard_arrow_down,
-                  color: const Color(0xFF367B86), size: 25.w),
+              rightIcon: SvgPicture.asset(
+               images. dropDownArrow,
+                color: colors.primaryGreenColour,
+              ),
               headerBackgroundColor: Colors.white,
               header: medium.reg20(
-                  text: 'Basic Details', color: const Color(0xFF367B86)),
+                  text: 'Basic Details', color: colors.primaryGreenColour),
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Consumer<Providers>(builder:(context, imagepickerprovider, child) => 
-                     Row(
+                  Consumer<Providers>(
+                    builder: (context, imagepickerprovider, child) => Row(
                       children: <Widget>[
                         imagepickerprovider.image == null
                             ? Container(
                                 height: 78.5.h,
                                 width: 78.5.w,
-                                clipBehavior: Clip.antiAlias, 
-                                decoration: const BoxDecoration(
+                                clipBehavior: Clip.antiAlias,
+                                decoration:  BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Color(0xFFE3E3E3)),
-                                child: const Icon(
-                                  Icons.person_2_outlined,
-                                  color: Color(0xFF3E3E3E),
-                                ),
-                              )
+                                    color: colors.imageIconBackgroundColour),
+                                child: Center(
+                                    child: SvgPicture.asset(
+                                  images.contactIcon,
+                                  height: 15.66.h,
+                                  width: 19.02.w,
+                                  color: colors.imageIconBackgroundColour,
+                                )))
                             : Container(
                                 height: 78.5.h,
                                 width: 78.5.w,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Color(0xFFE3E3E3)),
+                                    color: colors.imageIconBackgroundColour),
                                 child: ClipOval(
                                   child: Image.file(
                                     imagepickerprovider.image!,
@@ -80,9 +81,8 @@ String? _selectedOption;
                                     context: context,
                                     builder: (builder) {
                                       return SizedBox(
-                                        height:
-                                           300,
-                                        width:300,
+                                        height: 300,
+                                        width: 300,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
@@ -93,9 +93,11 @@ String? _selectedOption;
                                               children: [
                                                 GestureDetector(
                                                     onTap: () {
-                                                      imagepickerprovider.pickimage(
-                                                          ImageSource.gallery);
-                                                      Navigator.of(context).pop();
+                                                      imagepickerprovider
+                                                          .pickimage(ImageSource
+                                                              .gallery);
+                                                      Navigator.of(context)
+                                                          .pop();
                                                     },
                                                     child: const Icon(
                                                         size: 60, Icons.image)),
@@ -108,8 +110,11 @@ String? _selectedOption;
                                               children: [
                                                 GestureDetector(
                                                     onTap: () {
-                                                      imagepickerprovider.pickimage(ImageSource.camera);
-                                                      Navigator.of(context).pop();
+                                                      imagepickerprovider
+                                                          .pickimage(ImageSource
+                                                              .camera);
+                                                      Navigator.of(context)
+                                                          .pop();
                                                     },
                                                     child: const Icon(
                                                         size: 60,
@@ -126,12 +131,13 @@ String? _selectedOption;
                                 height: 32.h,
                                 width: 124.w,
                                 decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: const Color(0xFFAEAEAE)),
+                                    border: Border.all(
+                                        color: const Color(0xFFAEAEAE)),
                                     borderRadius: BorderRadius.circular(26.w)),
                                 child: Center(
                                     child: medium.reg14(
-                                        text: 'Upload Image', color: Colors.black)),
+                                        text: 'Upload Image',
+                                        color: Colors.black)),
                               ),
                             ),
                             Gap(12.h),
@@ -148,166 +154,67 @@ String? _selectedOption;
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          medium.reg18(
-                              text: 'Name',
-                              color: const Color(0xFF474747)),
-                          
-                          Row(
-                            children: <Widget>[
-                               Checkboxwidget(
-                                  backgroundcolour: Colors.white,
-                                  colorafterclicked: const Color(0xFF367B86),
-                                  valuechanged: (bool ischecked){},
-                                  ),
-                              Gap(9.w),
-                              medium.reg16(
-                                  text: 'Is Existing Customer',
-                                  color: const Color(0xFF474747))
-                            ],
-                          )
-                        ],
+                      const TextFieldAndHeading(
+                        title: 'Name',
+                        hintText: 'Name',
                       ),
-                      Gap(15.h),
-                      Container(
-                        height: 54.h,
-                        
-                        decoration: BoxDecoration(
-                            border: Border.all(color: const Color(0xFFC1C1C1)),
-                            borderRadius: BorderRadius.circular(16.w)),
-                        child: Center(
-                          child: TextField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.only(left: 20.w, bottom: 15.h),
-                                hintText:'Name',
-                                hintStyle: TextStyle(
-                                    color: const Color(0xFFA1A1A1),
-                                    fontFamily: 'GilroyRegular',
-                                    fontSize: 18.sp)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Gap(20.h),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      medium.reg18(text: 'Type', color: const Color(0xFF474747)),
+                      Gap(20.h),
+                      medium.reg18(
+                          text: 'Type', color: const Color(0xFF474747)),
                       Gap(23.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                           Radiobuttonwidget(
-                            buttontitle: 'Both',
-                            optionno: 'option1',
+                          RadioButtonWidget(
+                            buttonTitle: 'Both',
+                            optionNo: 'option1',
                             onChanged: (String? value) {
-                                setState(() {
-                                  _selectedOption = value;
-                                });},
-                            groupValue:  _selectedOption,
+                              setState(() {
+                                selectedOption = value;
+                              });
+                            },
+                            groupValue: selectedOption,
                           ),
                           Gap(20.w),
-                           Radiobuttonwidget(
-                            buttontitle: 'Vendor',
-                            optionno: 'option2',
+                          RadioButtonWidget(
+                            buttonTitle: 'Vendor',
+                            optionNo: 'option2',
                             onChanged: (String? value) {
-                                setState(() {
-                                  _selectedOption = value;
-                                });},
-                            groupValue:  _selectedOption,
+                              setState(() {
+                                selectedOption = value;
+                              });
+                            },
+                            groupValue: selectedOption,
                           ),
                           Gap(20.w),
-                           Radiobuttonwidget(
-                            buttontitle: 'Customer',
-                            optionno: 'option3',
+                          RadioButtonWidget(
+                            buttonTitle: 'Customer',
+                            optionNo: 'option3',
                             onChanged: (String? value) {
-                                setState(() {
-                                  _selectedOption = value;
-                                });},
-                            groupValue:  _selectedOption,
+                              setState(() {
+                                selectedOption = value;
+                              });
+                            },
+                            groupValue: selectedOption,
                           )
                         ],
                       ),
                     ],
                   ),
                   Gap(28.h),
-                  medium.reg18(
-                      text: 'Phone No',
-                      color: const Color(0xFF474747)),
-                  Gap(15.h),
-                  Container(
-                    height: 54.h,
-                   
-                    decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFC1C1C1)),
-                        borderRadius: BorderRadius.circular(16.w)),
-                    child: Center(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.only(left: 20.w, bottom: 15.h),
-                            hintText: 'Phone No 1',
-                            hintStyle: TextStyle(
-                                color: const Color(0xFFA1A1A1),
-                                fontFamily: 'GilroyRegular',
-                                fontSize: 18.sp)),
-                      ),
-                    ),
+                  const TextFieldAndHeading(
+                    title: 'Phone No',
+                    hintText: 'Phone No 1',
                   ),
                   Gap(15.h),
-                   Container(
-                    height: 54.h,
-                    
-                    decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFC1C1C1)),
-                        borderRadius: BorderRadius.circular(16.w)),
-                    child: Center(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.only(left: 20.w, bottom: 15.h),
-                            hintText: 'Phone No 2',
-                            hintStyle: TextStyle(
-                                color: const Color(0xFFA1A1A1),
-                                fontFamily: 'GilroyRegular',
-                                fontSize: 18.sp)),
-                      ),
-                    ),
+                  const TextFieldAndHeading(
+                    hintText: 'Phone No 2',
                   ),
                   Gap(20.h),
-                  medium.reg18(
-                      text: 'Email',
-                      color: const Color(0xFF474747)),
-                  
-                  Gap(15.h),
-                  Container(
-                    height: 54.h,
-                   
-                    decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFC1C1C1)),
-                        borderRadius: BorderRadius.circular(16.w)),
-                    child: Center(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.only(left: 20.w, bottom: 15.h),
-                            hintText: 'Email',
-                            hintStyle: TextStyle(
-                                color: const Color(0xFFA1A1A1),
-                                fontFamily: 'GilroyRegular',
-                                fontSize: 18.sp)),
-                      ),
-                    ),
-                  ),
-                  
-                 
+                  const TextFieldAndHeading(
+                    title: 'Email',
+                    hintText: 'Email',
+                  )
                 ],
               ))
         ]),

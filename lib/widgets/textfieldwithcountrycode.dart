@@ -1,79 +1,81 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class Textfieldwithcountrycode extends StatefulWidget {
+class TextFieldWithCountryCode extends StatefulWidget {
   final String? title;
-  final List<String>? countrycode;
-  const Textfieldwithcountrycode({required this.countrycode,this.title, super.key});
+  final List<String>? countryCode;
+  const TextFieldWithCountryCode(
+      {required this.countryCode, this.title, super.key});
 
   @override
-  State<Textfieldwithcountrycode> createState() =>
-      _TextfieldwithcountrycodeState();
+  State<TextFieldWithCountryCode> createState() =>
+      _TextFieldWithCountryCodeState();
 }
 
-class _TextfieldwithcountrycodeState extends State<Textfieldwithcountrycode> {
-  TextEditingController countrydropdown = TextEditingController();
-   ValueNotifier<List<String>> filtereditems = ValueNotifier<List<String>>([]);
-    final GlobalKey<OverlayState> overlaykey = GlobalKey<OverlayState>();
-  final containerkey = GlobalKey();
-  OverlayEntry? overlayentry;
+class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
+  TextEditingController countryDropDown = TextEditingController();
+  ValueNotifier<List<String>> filteredItems = ValueNotifier<List<String>>([]);
+  final GlobalKey<OverlayState> overlayKey = GlobalKey<OverlayState>();
+  final containerKey = GlobalKey();
+  OverlayEntry? overlayEntry;
   @override
-   void initState() {
+  void initState() {
     super.initState();
-    List<String> newfiltereditems = widget.countrycode?? [];
-    filtereditems.value = [...newfiltereditems];
-    countrydropdown.addListener(filteritems);
+    List<String> newFilteredItems = widget.countryCode ?? [];
+    filteredItems.value = [...newFilteredItems];
+    countryDropDown.addListener(filteritems);
   }
+
   void filteritems() {
-    String searchText = countrydropdown.text;
+    String searchText = countryDropDown.text;
     setState(() {
-      List<String> newfiltereditems = widget.countrycode!
-          .where(
-              (item) => item.contains(searchText))
+      List<String> newFilteredItems = widget.countryCode!
+          .where((item) => item.contains(searchText))
           .toList();
-      filtereditems.value = [...newfiltereditems];
+      filteredItems.value = [...newFilteredItems];
     });
   }
-   void showcontainer() {
-    overlayentry?.remove();
- overlayentry = null;
-    final RenderBox textfieldrenderbox =
-        containerkey.currentContext!.findRenderObject() as RenderBox;
-    final textfieldsize = textfieldrenderbox.size;
-    final textfieldposition = textfieldrenderbox.localToGlobal(Offset.zero);
-    final dropdownposition =
-        textfieldposition.translate(0, textfieldsize.height);
 
-    overlayentry = OverlayEntry(
+  void showcontainer() {
+    overlayEntry?.remove();
+    overlayEntry = null;
+    final RenderBox textFieldRenderBox =
+        containerKey.currentContext!.findRenderObject() as RenderBox;
+    final textFieldSize = textFieldRenderBox.size;
+    final textFieldPosition = textFieldRenderBox.localToGlobal(Offset.zero);
+    final dropDownPosition =
+        textFieldPosition.translate(0, textFieldSize.height);
+
+    overlayEntry = OverlayEntry(
         builder: (context) => Positioned(
-              top: dropdownposition.dy,
+              top: dropDownPosition.dy,
               child: Material(
-                child: Container(
+                child: SizedBox(
                   width: 83.w,
                   height: 200.h,
                   child: ValueListenableBuilder<List<String>>(
-                    valueListenable: filtereditems,
-                    builder: (context, value, child) => ListView.builder(padding: EdgeInsets.all(0),
+                    valueListenable: filteredItems,
+                    builder: (context, value, child) => ListView.builder(
+                        padding: const EdgeInsets.all(0),
                         itemCount: value.length,
                         itemBuilder: ((context, index) {
                           return InkWell(
                             onTap: () {
                               hideDropdown();
-                             
+
                               if (value.isNotEmpty) {
-                              countrydropdown.text = value[index];
+                                countryDropDown.text = value[index];
                               }
 
-                              setState(() {
+                              
                                 value = [];
-                              });
+                              
                             },
-                            child: Container(width: 83.w,
+                            child: Container(
+                              width: 83.w,
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.black)),
                               child: ListTile(
@@ -87,72 +89,104 @@ class _TextfieldwithcountrycodeState extends State<Textfieldwithcountrycode> {
               ),
             ));
 
-    Overlay.of(context).insert(overlayentry!);
-  }
-   void hideDropdown() {
-    overlayentry?.remove();
-    overlayentry = null;
+    Overlay.of(context).insert(overlayEntry!);
   }
 
+  void hideDropdown() {
+    overlayEntry?.remove();
+    overlayEntry = null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Overlay(key:overlaykey ,initialEntries: [ OverlayEntry(canSizeOverlay: true,builder: (context) => 
-       Column(crossAxisAlignment: CrossAxisAlignment.start,
-       mainAxisAlignment: MainAxisAlignment.start,
-         children: [if(widget.title!=null) medium.reg18(text: widget.title!),
-         if(widget.title!=null)Gap(15.h),
-           Row(mainAxisAlignment: MainAxisAlignment.center,
-           crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 52.h,
-                  width: 83.w,
-                  key: containerkey,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFFC1C1C1)),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16.w),
-                          bottomLeft: Radius.circular(16.w),
-                          topRight: Radius.zero,
-                          bottomRight: Radius.zero)),
-                  child: SizedBox(width: 50,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(width: 50,
-                          child: TextField(
-                            decoration: InputDecoration(border:InputBorder.none ),
-                            onTap: (){
-                             showcontainer();
-                            },
-                            controller: countrydropdown,
-                            style: TextStyle(fontSize: 18.sp),
-                          ),
-                        ),SvgPicture.asset('assets/images/dropdownarrow.svg',
-                        height: 6.h,
-                              width: 12.w,)
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    height: 52.h,
+    return Overlay(
+      key: overlayKey,
+      initialEntries: [
+        OverlayEntry(
+          canSizeOverlay: true,
+          builder: (context) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              if (widget.title != null) medium.reg18(text: widget.title!),
+              if (widget.title != null) Gap(15.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 54.h,
+                    width: 83.w,
+                    key: containerKey,
                     decoration: BoxDecoration(
                         border: Border.all(color: const Color(0xFFC1C1C1)),
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.zero,
-                            bottomLeft: Radius.zero,
-                            topRight: Radius.circular(16.w),
-                            bottomRight: Radius.circular(16.w))),
+                            topLeft: Radius.circular(16.w),
+                            bottomLeft: Radius.circular(16.w),
+                            topRight: Radius.zero,
+                            bottomRight: Radius.zero)),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Baseline(
+                            baseline: 25,
+                            baselineType: TextBaseline.alphabetic,
+                            child: SizedBox(
+                              width: 30.w,
+                              height: 40.h,
+                              child: TextField(
+                                decoration:
+                                    const InputDecoration(border: InputBorder.none),
+                                onTap: () {
+                                  showcontainer();
+                                },
+                                controller: countryDropDown,
+                                style: TextStyle(fontSize: 18.sp),
+                              ),
+                            ),
+                          ),
+                          Baseline(
+                            baseline: 40,
+                            baselineType: TextBaseline.alphabetic,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: SvgPicture.asset(
+                                'assets/images/dropdownarrow.svg',
+                                height: 6.h,
+                                width: 12.w,
+                                color: const Color(0xFF303030),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                )
-              ],
-            ),
-         ],
-       ),
-    ),],
-      
+                  Expanded(
+                    child: Container(
+                      height: 54.h,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: const Color(0xFFC1C1C1)),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.zero,
+                              bottomLeft: Radius.zero,
+                              topRight: Radius.circular(16.w),
+                              bottomRight: Radius.circular(16.w))),
+                      child: Padding(
+                        padding:  EdgeInsets.only(bottom: 7.h),
+                        child: const TextField(textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(border: InputBorder.none),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

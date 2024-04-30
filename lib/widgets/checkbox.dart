@@ -1,29 +1,30 @@
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Checkboxwidget extends StatefulWidget {
-  final Color backgroundcolour;
-  final Color colorafterclicked;
-  final ValueChanged<bool> valuechanged;
-  const Checkboxwidget(
-      {required this.backgroundcolour,
-      required this.colorafterclicked,
-      required this.valuechanged,
+class CheckBoxWidget extends StatefulWidget {
+  final Color backGroundColour;
+  final Color colorAfterClicked;
+  final ValueChanged<bool> valueChanged;
+  const CheckBoxWidget(
+      {required this.backGroundColour,
+      required this.colorAfterClicked,
+      required this.valueChanged,
       super.key});
 
   @override
-  State<Checkboxwidget> createState() => _CheckboxwidgetState();
+  State<CheckBoxWidget> createState() => _CheckBoxWidgetState();
 }
 
-class _CheckboxwidgetState extends State<Checkboxwidget> {
-  bool isclicked = false;
+class _CheckBoxWidgetState extends State<CheckBoxWidget> {
+  bool isClicked = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
           setState(() {
-            isclicked = !isclicked;
-            widget.valuechanged(isclicked);
+            isClicked = !isClicked;
+            widget.valueChanged(isClicked);
           });
         },
         child: Container(
@@ -31,12 +32,12 @@ class _CheckboxwidgetState extends State<Checkboxwidget> {
             width: 24.06.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3.54),
-              color: isclicked
-                  ? widget.colorafterclicked
-                  : widget.backgroundcolour,
-              border: Border.all(width: 0.89.w, color: const Color(0xFF898989)),
+              color: isClicked
+                  ? widget.colorAfterClicked
+                  : widget.backGroundColour,
+              border: Border.all(width: 0.89.w, color: colors.checkBoxBorderColour),
             ),
-            child: isclicked
+            child: isClicked
                 ? SizedBox(
                     height: 8.89.h,
                     width: 13.33.w,

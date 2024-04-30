@@ -3,8 +3,8 @@ import 'package:erp_widget_packages/widgets/textfieldwithcountrycode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Addcontact extends StatelessWidget {
-  const Addcontact({super.key});
+class AddContact extends StatelessWidget {
+  const AddContact({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,24 +12,33 @@ class Addcontact extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Textfieldandheading(
+        TextFieldAndHeading(
           title: 'Coutry',
-          dropdownentries: ['America','usa','india','indonasia','china','Colombia'],
+          dropDownEntries: [
+            'America',
+            'usa',
+            'india',
+            'indonasia',
+            'china',
+            'Colombia'
+          ],
         ),
-        Textfieldwithcountrycode(
-            title: 'Phone No', countrycode: ['91', '92', '93']),
-        Textfieldwithcountrycode(
-            title: 'Mobile No', countrycode: ['91', '92', '93']),
-            Textfieldandheading(title: 'City',dropdownentries: ['City1','city2'],),
-        Textfieldwithcountrycode(
-            title: 'Whatsapp No', countrycode: ['91', '92', '93']),
-             Textfieldandheading(
+        TextFieldWithCountryCode(
+            title: 'Phone No', countryCode: ['91', '92', '93']),
+        TextFieldWithCountryCode(
+            title: 'Mobile No', countryCode: ['91', '92', '93']),
+        TextFieldAndHeading(
+          title: 'City',
+          dropDownEntries: ['City1', 'city2'],
+        ),
+        TextFieldWithCountryCode(
+            title: 'Whatsapp No', countryCode: ['91', '92', '93']),
+        TextFieldAndHeading(
           title: 'Designation',
         ),
-         Textfieldandheading(
+        TextFieldAndHeading(
           title: 'Designation',
-          dropdownentries: ['Owner','Vendor','Seller'],
-          
+          dropDownEntries: ['Owner', 'Vendor', 'Seller'],
         ),
       ],
     );

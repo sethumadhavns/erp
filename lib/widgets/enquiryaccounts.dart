@@ -1,35 +1,38 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:erp_widget_packages/widgets/contactdetailsconditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class Enquiryaccounts extends StatelessWidget {
+class EnquiryAccounts extends StatelessWidget {
   final String name;
   final String? code;
   final String? role;
   final String? date;
   final String? name2;
   final String? email;
-  final String? phoneno;
-  final bool? editbutton;
+  final String? phoneNo;
+  final bool? editButton;
   final bool? call;
-  final String? validitydate;
+  final String? validityDate;
  
-final Contactconditions? condition;
+final ContactConditions? condition;
 
 
-  const Enquiryaccounts(
+  const EnquiryAccounts(
       {required this.name,
       this.code,
       this.role,
       this.date,
       this.name2,
       this.email,
-      this.phoneno,
-      this.editbutton = false,
+      this.phoneNo,
+      this.editButton = false,
       this.call = false,
-      this.validitydate,
+      this.validityDate,
       
       this.condition,
       super.key});
@@ -47,12 +50,12 @@ final Contactconditions? condition;
                 Container(
                   height: 44.35.h,
                   width: 44.35.w,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Color(0xFFE3E3E3)),
+                  decoration:  BoxDecoration(
+                      shape: BoxShape.circle, color:colors.imageIconBackgroundColour),
                   child: IconButton(
                       onPressed: () {},
-                      icon: Image.asset(
-                        'assets/images/contacticon.png',
+                      icon: SvgPicture.asset(
+                        images.contactIcon,
                         height: 15.43.h,
                         width: 12.77.w,
                       )),
@@ -64,33 +67,33 @@ final Contactconditions? condition;
                     Row(
                       children: <Widget>[
                         semibold.reg17(
-                            text: name, color: const Color(0xFF1E1E1E)),
+                            text: name, color: colors.contactNameColor),
                         Gap(5.w),
-                        if (code != null&&editbutton==false) medium.reg14(text: code!)
+                        if (code != null&&editButton==false) medium.reg14(text: code!)
                       ],
                     ),
                     Gap(9.h),
-                    if (role != null && editbutton == false)
+                    if (role != null && editButton == false)
                       medium.reg14(text: role!),
-                    if (date != null && editbutton == false&&role==null)
+                    if (date != null && editButton == false&&role==null)
                       medium.reg14(text: date!)
                   ],
                 )
               ],
             ),
-            if (editbutton == true)
+            if (editButton == true)
               IconButton(
                   onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/editicon.png',
+                  icon: SvgPicture.asset(
+                    images.edit,
                     height: 17.58.h,
                     width: 17.58.w,
                   ))
                   else 
                   if(date!=null&&role!=null)
                    medium.reg14(text: date!),
-                   if(condition!=null&&editbutton==false)
-                   conditions(condition,validitydate)
+                   if(condition!=null&&editButton==false)
+                   conditions(condition,validityDate)
             
           ],
         ),
@@ -100,7 +103,7 @@ final Contactconditions? condition;
             height: 72.h,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.w),
-                color: const Color(0xFF367B86).withOpacity(0.08)),
+                color: colors.primaryGreenColour.withOpacity(0.08)),
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 16.w),
               child: Column(
@@ -110,30 +113,30 @@ final Contactconditions? condition;
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          Image.asset(
-                            'assets/images/contacticon.png',
+                          SvgPicture.asset(
+                            images.contactIcon,
                             height: 12.58.h,
                             width: 10.36.w,
-                            color: const Color(0xFF367B86),
+                            color: colors.primaryGreenColour,
                           ),
                           Gap(8.35.w),
                           medium.reg14(
-                              text: name2 ?? '', color: const Color(0xFF367B86))
+                              text: name2 ?? '', color: colors.primaryGreenColour)
                         ],
                       ),
-                      if (phoneno != null)
+                      if (phoneNo != null)
                         Row(
                           children: <Widget>[
-                            Image.asset(
-                              'assets/images/phoneicon.png',
+                            SvgPicture.asset(
+                              images.phone,
                               height: 11.76.h,
                               width: 11.76.w,
-                              color: const Color(0xFF367B86),
+                              color: colors.primaryGreenColour,
                             ),
                             Gap(6.23.w),
                             medium.reg14(
-                                text: phoneno ?? '',
-                                color: const Color(0xFF367B86))
+                                text: phoneNo ?? '',
+                                color:colors.primaryGreenColour)
                           ],
                         )
                     ],
@@ -141,14 +144,14 @@ final Contactconditions? condition;
                   Gap(6.h),
                   Row(
                     children: <Widget>[
-                      Image.asset(
-                        'assets/images/emailicon.png',
+                      SvgPicture.asset(
+                        images.email,
                         height: 10.88.h,
                         width: 13.47.w,
                       ),
                       Gap(8.w),
                       medium.reg14(
-                          text: email ?? '', color: const Color(0xFF367B86))
+                          text: email ?? '', color:colors.primaryGreenColour)
                     ],
                   )
                 ],
@@ -160,17 +163,17 @@ final Contactconditions? condition;
           Container(
             height: 46.66.h,
             decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xFF367B86)),
+                border: Border.all(color:colors.primaryGreenColour),
                 borderRadius: BorderRadius.circular(52.w)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset('assets/images/phoneicon.png',
+                SvgPicture.asset(images.phone,
                     height: 14.66.h,
                     width: 14.66.w,
-                    color: const Color(0xFF367B86)),
+                    color: colors.primaryGreenColour),
                 Gap(10.w),
-                semibold.reg16(text: 'Call', color: const Color(0xFF367B86))
+                semibold.reg16(text: 'Call', color: colors.primaryGreenColour)
               ],
             ),
           )

@@ -1,18 +1,19 @@
 import 'package:accordion/accordion.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:erp_widget_packages/widgets/productdetails.dart';
 import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
-class Paymentinfotwo extends StatefulWidget {
-  const Paymentinfotwo({super.key});
+class PaymentInfoTwo extends StatefulWidget {
+  const PaymentInfoTwo({super.key});
 
   @override
-  State<Paymentinfotwo> createState() => _PaymentinfotwoState();
+  State<PaymentInfoTwo> createState() => _PaymentInfoTwoState();
 }
 
-class _PaymentinfotwoState extends State<Paymentinfotwo> {
+class _PaymentInfoTwoState extends State<PaymentInfoTwo> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,20 +23,20 @@ class _PaymentinfotwoState extends State<Paymentinfotwo> {
             isOpen: true,
             headerBackgroundColor: Colors.white,
             header: medium.reg20(
-                text: 'Payment Info', color: const Color(0xFF367B86)),
+                text: 'Payment Info', color: colors.primaryGreenColour),
             rightIcon: Image.asset(
               'assets/images/dropdownbutton.png',
               height: 6.04.h,
               width: 12.09.w,
-              color: const Color(0xFF367B86),
+              color: colors.primaryGreenColour,
             ),
             content: Column(
               children: <Widget>[
-                const Textfieldandheading(title: 'Sales Person',dropdownentries: [],),
+                const TextFieldAndHeading(title: 'Sales Person',dropDownEntries: [],),
                 Gap(20.h),
-               const Textfieldandheading(title: 'Status',dropdownentries: [],),
+               const TextFieldAndHeading(title: 'Status',dropDownEntries: [],),
                 Gap(20.h),
-                const  Textfieldandheading(title: 'Remarks',height: 106, dropdownentries: [],),
+                const  TextFieldAndHeading(title: 'Remarks',height: 106, dropDownEntries: [],),
                 
               ],
             ))

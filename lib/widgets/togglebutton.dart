@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Togglebutton extends StatefulWidget {
-  const Togglebutton({super.key});
+class ToggleButton extends StatefulWidget {
+  const ToggleButton({super.key});
 
   @override
-  State<Togglebutton> createState() => _TogglebuttonState();
+  State<ToggleButton> createState() => _ToggleButtonState();
 }
 
-class _TogglebuttonState extends State<Togglebutton> {
+class _ToggleButtonState extends State<ToggleButton> {
   bool light = true;
   @override
    

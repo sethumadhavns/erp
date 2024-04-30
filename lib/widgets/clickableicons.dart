@@ -1,30 +1,32 @@
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class Clickableicons extends StatefulWidget {
+class ClickableIcons extends StatefulWidget {
   final String icon;
-  final bool isselected;
-  final Function(String) oniconselected;
+  final bool isSelected;
+  final Function(String) onIconSelected;
 
-  const Clickableicons(
+  const ClickableIcons(
       {required this.icon,
-      required this.isselected,
-      required this.oniconselected,
+      required this.isSelected,
+      required this.onIconSelected,
       super.key});
 
   @override
-  State<Clickableicons> createState() => _ClickableiconsState();
+  State<ClickableIcons> createState() => _ClickableIconsState();
 }
 
-class _ClickableiconsState extends State<Clickableicons> {
+class _ClickableIconsState extends State<ClickableIcons> {
   
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget.oniconselected(widget.icon);
+        widget.onIconSelected(widget.icon);
         setState(() {
-          widget.isselected!=true;
+          widget.isSelected!=true;
         });
        
       },
@@ -33,17 +35,17 @@ class _ClickableiconsState extends State<Clickableicons> {
         width: 56.w,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.w),
-            color: widget.isselected
-                ? const Color(0xFF62C8A3).withOpacity(0.14)
+            color: widget.isSelected
+                ?colors.clickableIconColor.withOpacity(0.14)
                 : Colors.transparent),
         child: Center(
-          child: Image.asset(
-            'assets/images/${widget.icon}.png',
+          child: SvgPicture.asset(
+            widget.icon,
             height: 27.75.h,
             width: 27.75.w,
-            color: widget.isselected
-                ? const Color(0xFF62C8A3)
-                : const Color(0xFFB8C3C4),
+            color: widget.isSelected
+                ?colors.clickableIconColor
+                :colors.defaultclickableIconColor,
           ),
         ),
       ),

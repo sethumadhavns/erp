@@ -1,29 +1,30 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
-class Productoverview extends StatefulWidget {
-  final String mainfield;
-  final List<String> subfield;
-  final List<String> imagepath;
-  const Productoverview(
-      {required this.mainfield,
-      required this.subfield,
-      required this.imagepath,
+class ProductOverview extends StatefulWidget {
+  final String mainField;
+  final List<String> subField;
+  final List<String> imagePath;
+  const ProductOverview(
+      {required this.mainField,
+      required this.subField,
+      required this.imagePath,
       super.key});
 
   @override
-  State<Productoverview> createState() => _ProductoverviewState();
+  State<ProductOverview> createState() => _ProductOverviewState();
 }
 
-class _ProductoverviewState extends State<Productoverview> {
+class _ProductOverviewState extends State<ProductOverview> {
   @override
   Widget build(BuildContext context) {
-    List<AccordionSection> accordionSections = widget.subfield.map((title) {
-      int index = widget.subfield.indexOf(title);
-      return buildAccordionSection(title, widget.imagepath[index]);
+    List<AccordionSection> accordionSections = widget.subField.map((title) {
+      int index = widget.subField.indexOf(title);
+      return buildAccordionSection(title, widget.imagePath[index]);
     }).toList();
 
     return Accordion(
@@ -40,12 +41,12 @@ class _ProductoverviewState extends State<Productoverview> {
           headerPadding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 10.w),
           headerBackgroundColor: Colors.white,
           headerBackgroundColorOpened:
-              const Color(0xFF367B86).withOpacity(0.08),
+              colors.primaryGreenColour.withOpacity(0.08),
           rightIcon: null,
           header: Row(
             children: [
               medium.reg18(
-                  text: widget.mainfield, color: const Color(0xFF367B86)),
+                  text: widget.mainField, color: colors.primaryGreenColour),
               Gap(289.w),
               const Icon(Icons.arrow_drop_down)
             ],
@@ -74,11 +75,11 @@ class _ProductoverviewState extends State<Productoverview> {
   AccordionSection buildAccordionSection(String title, String imagepath) {
     return AccordionSection(
       rightIcon: Icon(Icons.keyboard_arrow_down,
-          color: const Color(0xFF848484), size: 25.w),
+          color: colors.instructionTextColour, size: 25.w),
       headerBackgroundColor: Colors.white,
       headerBorderRadius: 16.w,
       headerPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-      header: medium.reg18(text: title, color: const Color(0xFF848484)),
+      header: medium.reg18(text: title, color: colors.instructionTextColour),
       content: Image.asset(imagepath),
     );
   }

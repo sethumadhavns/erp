@@ -1,85 +1,85 @@
 import 'dart:developer';
 
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-class Textfieldandheading extends StatefulWidget {
+class TextFieldAndHeading extends StatefulWidget {
   final String? title;
   final int? height;
-  final String? hinttext;
-  final List<String>? dropdownentries;
-  const Textfieldandheading(
+  final String? hintText;
+  final List<String>? dropDownEntries;
+  const TextFieldAndHeading(
       {this.title,
       this.height = 54,
-      this.hinttext,
-      this.dropdownentries,
+      this.hintText,
+      this.dropDownEntries,
       super.key});
 
   @override
-  State<Textfieldandheading> createState() => _TextfieldandheadingState();
+  State<TextFieldAndHeading> createState() => _TextFieldAndHeadingState();
 }
 
-class _TextfieldandheadingState extends State<Textfieldandheading> {
+class _TextFieldAndHeadingState extends State<TextFieldAndHeading> {
   TextEditingController text = TextEditingController();
-  TextEditingController dropdown = TextEditingController();
-  ValueNotifier<List<String>> filtereditems = ValueNotifier<List<String>>([]);
-  final GlobalKey<OverlayState> overlaykey = GlobalKey<OverlayState>();
-  final containerkey = GlobalKey();
-  OverlayEntry? overlayentry;
+  TextEditingController dropDown = TextEditingController();
+  ValueNotifier<List<String>> filteredItems = ValueNotifier<List<String>>([]);
+  final GlobalKey<OverlayState> overlayKey = GlobalKey<OverlayState>();
+  final containerKey = GlobalKey();
+  OverlayEntry? overlayEntry;
 
-  String? dropdownvalue;
+  String? dropDownValue;
   @override
   void initState() {
     super.initState();
-    List<String> newfiltereditems = widget.dropdownentries ?? [];
-    filtereditems.value = [...newfiltereditems];
-    dropdown.addListener(filteritems);
+    List<String> newFilteredItems = widget.dropDownEntries ?? [];
+    filteredItems.value = [...newFilteredItems];
+    dropDown.addListener(filteritems);
   }
 
   void filteritems() {
-    String searchText = dropdown.text;
+    String searchText = dropDown.text;
     setState(() {
-      List<String> newfiltereditems = widget.dropdownentries!
+      List<String> newFilteredItems = widget.dropDownEntries!
           .where(
               (item) => item.toLowerCase().contains(searchText.toLowerCase()))
           .toList();
-      filtereditems.value = [...newfiltereditems];
+      filteredItems.value = [...newFilteredItems];
     });
   }
 
-  void showcontainer() {
-     overlayentry?.remove();
- overlayentry = null;
-    final RenderBox textfieldrenderbox =
-        containerkey.currentContext!.findRenderObject() as RenderBox;
-    final textfieldsize = textfieldrenderbox.size;
-    final textfieldposition = textfieldrenderbox.localToGlobal(Offset.zero);
-    final dropdownposition =
-        textfieldposition.translate(0, textfieldsize.height);
+  void showContainer() {
+    overlayEntry?.remove();
+    overlayEntry = null;
+    final RenderBox textFieldRenderBox =
+        containerKey.currentContext!.findRenderObject() as RenderBox;
+    final textFieldSize = textFieldRenderBox.size;
+    final textFieldPosition = textFieldRenderBox.localToGlobal(Offset.zero);
+    final dropDownPosition =
+        textFieldPosition.translate(0, textFieldSize.height);
 
-    overlayentry = OverlayEntry(
+    overlayEntry = OverlayEntry(
         builder: (context) => Positioned(
-              top: dropdownposition.dy,
+              top: dropDownPosition.dy,
               child: Material(
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 200.h,
                   child: ValueListenableBuilder<List<String>>(
-                    valueListenable: filtereditems,
-                    builder: (context, value, child) => ListView.builder(padding: EdgeInsets.all(0),
+                    valueListenable: filteredItems,
+                    builder: (context, value, child) => ListView.builder(
+                        padding: const EdgeInsets.all(0),
                         itemCount: value.length,
                         itemBuilder: ((context, index) {
                           return InkWell(
                             onTap: () {
-                              
                               hideDropdown();
                               log('attempting to remove');
                               if (value.isNotEmpty) {
-                                dropdown.text = value[index];
+                                dropDown.text = value[index];
                               }
 
                               setState(() {
@@ -99,85 +99,86 @@ class _TextfieldandheadingState extends State<Textfieldandheading> {
                 ),
               ),
             ));
- 
-    Overlay.of(context).insert(overlayentry!);
-    
+
+    Overlay.of(context).insert(overlayEntry!);
   }
 
-  void hideDropdown() {//to remove the overlay when clicking on inkwell
-    
-    overlayentry?.remove();
-    overlayentry = null;
-  }
+  void hideDropdown() {
+    //to remove the overlay when clicking on inkwell
 
-  
+    overlayEntry?.remove();
+    overlayEntry = null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return 
-      Overlay(key: overlaykey, initialEntries: [
-        OverlayEntry(canSizeOverlay: true,
-          builder: (context) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              if (widget.title != null) ...[
-                medium.reg18(text: widget.title!),
-                Gap(15.h),
-              ],
-              Container(
-                //the roundcontainer which has textfield
-                key: containerkey,
-                height: widget.height!.h,
-                decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xFFC1C1C1)),
-                    borderRadius: BorderRadius.circular(16.w)),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.w, right: 20.w,top: 15.h),
-                  child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      if (widget.hinttext == null) ...[
-                        medium.reg18(
-                            text: '-', color: const Color(0xFF909090)),
-                        Gap(10.w),
-                      ],
-                      if (widget.dropdownentries == null) ...[
-                        Flexible(
-                          child: TextField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: widget.hinttext ?? ''),
-                          ),
-                        ),
-                         Gap(10.w),
-                      ],
-                     
-                      if (widget.dropdownentries != null) ...[ Expanded(
-                            child: TextField(
-                          decoration:
-                              const InputDecoration(border: InputBorder.none),
-                          controller: dropdown,
-                          onTap: () {
-                            
-                              showcontainer();
-                            
-                          },
-                        )),SvgPicture.asset(
-                          'assets/images/dropdownarrow.svg',
-                          height: 6.h,
-                          width: 12.w,
-                        )]
-                       
-                     
-                        
+    return Overlay(key: overlayKey, initialEntries: [
+      OverlayEntry(
+        canSizeOverlay: true,
+        builder: (context) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            if (widget.title != null) ...[
+              medium.reg18(text: widget.title!),
+              Gap(15.h),
+            ],
+            Container(
+              //the roundcontainer which has textfield
+              key: containerKey,
+              height: widget.height!.h,
+              decoration: BoxDecoration(
+                  border: Border.all(color: const Color(0xFFC1C1C1)),
+                  borderRadius: BorderRadius.circular(16.w)),
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: 20.w,
+                  right: 20.w,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    if (widget.hintText == null) ...[
+                      medium.reg18(text: '-', color: const Color(0xFF909090)),
+                      Gap(10.w),
                     ],
-                  ),
+                    if (widget.dropDownEntries == null) ...[
+                      Flexible(
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: widget.hintText ?? '',
+                              hintStyle: TextStyle(
+                                  fontFamily: 'GilroyRegular',
+                                  fontSize: 18.sp,
+                                  color: const Color(0xFFA1A1A1))),
+                        ),
+                      ),
+                      Gap(10.w),
+                    ],
+                    if (widget.dropDownEntries != null) ...[
+                      Expanded(
+                          child: TextField(
+                        decoration:
+                            const InputDecoration(border: InputBorder.none),
+                        controller: dropDown,
+                        onTap: () {
+                          showContainer();
+                        },
+                      )),
+                      SvgPicture.asset(
+                        images.dropDownArrow,
+                        height: 6.h,
+                        width: 12.w,
+                      )
+                    ]
+                  ],
                 ),
               ),
-            ],
-          ),
-        
-     ) ]
-    );
+            ),
+          ],
+        ),
+      )
+    ]);
   }
 }

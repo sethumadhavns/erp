@@ -1,20 +1,22 @@
 import 'package:accordion/accordion.dart';
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/dropdownboxwithtitle.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
+
 import 'package:erp_widget_packages/widgets/radiobutton.dart';
+import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
-class Purposedetails extends StatefulWidget {
-  const Purposedetails({super.key});
+class PurposeDetails extends StatefulWidget {
+  const PurposeDetails({super.key});
 
   @override
-  State<Purposedetails> createState() => _PurposedetailsState();
+  State<PurposeDetails> createState() => _PurposeDetailsState();
 }
 
-class _PurposedetailsState extends State<Purposedetails> {
-  String? _selectedOption;
+class _PurposeDetailsState extends State<PurposeDetails> {
+  String? selectedOption;
   @override
   Widget build(BuildContext context) {
     return Accordion(
@@ -28,114 +30,77 @@ class _PurposedetailsState extends State<Purposedetails> {
               isOpen: true,
               header: Row(children: [
                 medium.reg20(
-                    text: 'Purpose Details', color: const Color(0xFF367B86)),
+                    text: 'Purpose Details', color: colors.primaryGreenColour),
                 Gap(184.91.w),
-                const Icon(Icons.arrow_drop_down, color: Color(0xFF367B86)),
+                 Icon(Icons.arrow_drop_down, color:colors.primaryGreenColour),
               ]),
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          const Dropdownwidgetandtitle(
-                            heightofbox: 54,
-                            
-                            title: 'Lead Source',
-                            dropdownentries: [
-                              'india',
-                              'pakisthan',
-                              'england',
-                              'america',
-                              'canada'
-                            ],
+                      const TextFieldAndHeading(title: 'Lead Source',dropDownEntries: [],),
+                      Gap(10.w),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          height: 47.14.h,
+                          width: 47.14.w,
+                          decoration:  BoxDecoration(
+                            shape: BoxShape.circle,
+                            color:colors.primaryGreenColour,
                           ),
-                          Gap(10.w),
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: Container(
-                              height: 47.14.h,
-                              width: 47.14.w,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF367B86),
-                              ),
-                              child: const Icon(
-                                Icons.add,
-                                color: Color(0xFFE5E5E5),
-                              ),
-                            ),
-                          )
-                        ],
+                          child: const Icon(
+                            Icons.add,
+                            color: Color(0xFFE5E5E5),
+                          ),
+                        ),
                       )
                     ],
                   ),
                   Gap(20.h),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  medium.reg18(
+                      text: 'Lead Purpose', color: const Color(0xFF474747)),
+                  Gap(23.h),
+                  Row(
                     children: <Widget>[
-                      medium.reg18(
-                          text: 'Lead Purpose', color: const Color(0xFF474747)),
-                      Gap(23.h),
-                      Row(
-                        children: <Widget>[
-                          Radiobuttonwidget(
-                            buttontitle: 'Product',
-                            optionno: 'option 1',
-                            onChanged: (String? value) {
-                              setState(() {
-                                _selectedOption = value;
-                              });
-                            },
-                            groupValue: _selectedOption,
-                          ),
-                          Gap(30.w),
-                          Radiobuttonwidget(
-                            buttontitle: 'Service',
-                            optionno: 'option 2',
-                            onChanged: (String? value) {
-                              setState(() {
-                                _selectedOption = value;
-                              });
-                            },
-                            groupValue: _selectedOption,
-                          ),
-                          Gap(30.w),
-                          Radiobuttonwidget(
-                            buttontitle: 'Others',
-                            optionno: 'option 3',
-                            onChanged: (String? value) {
-                              setState(() {
-                                _selectedOption = value;
-                              });
-                            },
-                            groupValue: _selectedOption,
-                          ),
-                        ],
-                      )
+                      RadioButtonWidget(
+                        buttonTitle: 'Product',
+                        optionNo: 'option 1',
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedOption = value;
+                          });
+                        },
+                        groupValue: selectedOption,
+                      ),
+                      Gap(30.w),
+                      RadioButtonWidget(
+                        buttonTitle: 'Service',
+                        optionNo: 'option 2',
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedOption = value;
+                          });
+                        },
+                        groupValue: selectedOption,
+                      ),
+                      Gap(30.w),
+                      RadioButtonWidget(
+                        buttonTitle: 'Others',
+                        optionNo: 'option 3',
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedOption = value;
+                          });
+                        },
+                        groupValue: selectedOption,
+                      ),
                     ],
                   ),
                   Gap(28.w),
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Dropdownwidgetandtitle(
-                        heightofbox: 54,
-                        
-                        title: 'Service',
-                        dropdownentries: [
-                          'india',
-                          'pakisthan',
-                          'england',
-                          'america',
-                          'canada'
-                        ],
-                      )
-                    ],
-                  )
+                  const TextFieldAndHeading(title: 'Service',dropDownEntries: [],)
                 ],
               ))
         ]);

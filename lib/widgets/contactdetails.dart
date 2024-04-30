@@ -1,47 +1,50 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 import 'package:erp_widget_packages/widgets/contactdetailsconditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class Contactdetails extends StatefulWidget {
+class ContactDetails extends StatefulWidget {
   final String name;
   final String? date;
   final String email;
-  final String landphone;
-  final String? mobileno;
+  final String landPhone;
+  final String? mobileNo;
   final String? location;
   final String? remarks;
-  final Contactconditions? condition;
+  final ContactConditions? condition;
   final bool? call;
   final bool? whatsapp;
   final String? role;
-  final String? validitydate;
-  final Function(int)? selectedbutton;
-  const Contactdetails(
+  final String? validityDate;
+  final Function(int)? selectedButton;
+  const ContactDetails(
       {required this.name,
       required this.email,
-      required this.landphone,
+      required this.landPhone,
       this.date,
       this.condition,
-      this.mobileno,
+      this.mobileNo,
       this.location,
       this.remarks,
       this.call = false,
       this.whatsapp = false,
       this.role,
-      this.selectedbutton,
-      this.validitydate,
+      this.selectedButton,
+      this.validityDate,
 
       super.key});
 
   @override
-  State<Contactdetails> createState() => _ContactdetailsState();
+  State<ContactDetails> createState() => _ContactDetailsState();
 }
 
-class _ContactdetailsState extends State<Contactdetails> {
+class _ContactDetailsState extends State<ContactDetails> {
   int? buttonvalue = -1;
   @override
   Widget build(BuildContext context) {
@@ -61,11 +64,11 @@ class _ContactdetailsState extends State<Contactdetails> {
                         height: 44.35.h,
                         width: 44.35.w,
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Color(0xFFE3E3E3)),
+                            shape: BoxShape.circle, color: colors.imageIconBackgroundColour),
                         child: IconButton(
                             onPressed: () {},
-                            icon: Image.asset(
-                              'assets/images/contacticon.png',
+                            icon: SvgPicture.asset(
+                              images.contactIcon,
                               height: 15.51.h,
                               width: 12.77.w,
                             )),
@@ -76,16 +79,16 @@ class _ContactdetailsState extends State<Contactdetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           semibold.reg17(
-                              text: widget.name, color: Color(0xFF1E1E1E)),
+                              text: widget.name, color:colors.contactNameColor),
                           Gap(5.h),
                           medium.reg14(
                               text: widget.date ?? widget.role ?? '',
-                              color: Color(0xFF5D5D5D))
+                              color: colors.contactDateColor)
                         ],
                       ),
                     ],
                   ),
-                  conditions(widget.condition,widget.validitydate)//conditions
+                  conditions(widget.condition,widget.validityDate)//conditions
                 ],
               ),
               Gap(26.4.h),
@@ -94,8 +97,8 @@ class _ContactdetailsState extends State<Contactdetails> {
                 children: <Widget>[
                   Row(//email
                     children: <Widget>[
-                      Image.asset(
-                        'assets/images/emailicon.png',
+                      SvgPicture.asset(
+                        images.email,
                         height: 11.8.h,
                         width: 14.61.w,
                       ),
@@ -106,39 +109,39 @@ class _ContactdetailsState extends State<Contactdetails> {
                   Gap(74.59.w),
                   Row(//phone
                     children: <Widget>[
-                      Image.asset(
-                        'assets/images/phoneicon.png',
+                       SvgPicture.asset(
+                        images.phone,
                         height: 11.8.h,
                         width: 11.w,
                       ),
                       Gap(8.w),
-                      medium.reg16(text: widget.landphone)
+                      medium.reg16(text: widget.landPhone)
                     ],
                   ),
                 ],
               ),
               Gap(10.h),
-              if (widget.mobileno != null || widget.location != null)
+              if (widget.mobileNo != null || widget.location != null)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    if (widget.mobileno != null)
+                    if (widget.mobileNo != null)
                       Row(
                         children: <Widget>[
-                          Image.asset(
-                            'assets/images/mobileicon.png',
+                           SvgPicture.asset(
+                            images.mobile,
                             height: 14.66.h,
                             width: 9.16.w,
                           ),
                           Gap(8.w),
-                          medium.reg16(text: widget.mobileno ?? '')
+                          medium.reg16(text: widget.mobileNo ?? '')
                         ],
                       ),
                     if (widget.location != null)
                       Row(
                         children: <Widget>[
-                          Image.asset(
-                            'assets/images/locationicon.png',
+                          SvgPicture.asset(
+                            images.location,
                             height: 11.8.h,
                             width: 11.8.w,
                           ),
@@ -159,7 +162,7 @@ class _ContactdetailsState extends State<Contactdetails> {
                             setState(() {
                               buttonvalue = 1;
 
-                              widget.selectedbutton!(buttonvalue!);
+                              widget.selectedButton!(buttonvalue!);
                             });
                           },
                           child: Container(
@@ -171,14 +174,14 @@ class _ContactdetailsState extends State<Contactdetails> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Image.asset('assets/images/phoneicon.png',
+                                SvgPicture.asset(images.phone,
                                     height: 14.66.h,
                                     width: 14.66.w,
-                                    color: Color(0xFF367B86)),
+                                    color: colors.primaryGreenColour),
                                 Gap(10.w),
                                 semibold.reg16(
                                     text: 'Call',
-                                    color: const Color(0xFF367B86))
+                                    color: colors.primaryGreenColour)
                               ],
                             ),
                           )),
@@ -189,26 +192,26 @@ class _ContactdetailsState extends State<Contactdetails> {
                           onTap: () {
                             setState(() {
                               buttonvalue = 2;
-                              widget.selectedbutton!(buttonvalue!);
+                              widget.selectedButton!(buttonvalue!);
                             });
                           },
                           child: Container(
                             height: 46.66.h,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF367B86)),
+                              border: Border.all(color:colors.primaryGreenColour),
                               borderRadius: BorderRadius.circular(52.w),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Image.asset('assets/images/whatsapp.png',
+                              SvgPicture.asset(images.whatsapp,
                                     height: 14.66.h,
                                     width: 14.66.w,
-                                    color: Color(0xFF367B86)),
+                                    color: colors.primaryGreenColour),
                                 Gap(10.w),
                                 semibold.reg16(
                                     text: 'Whatsapp',
-                                    color: const Color(0xFF367B86))
+                                    color: colors.primaryGreenColour)
                               ],
                             ),
                           )),
@@ -219,7 +222,7 @@ class _ContactdetailsState extends State<Contactdetails> {
               if (widget.remarks != null)
                 Column(
                   children: <Widget>[
-                    medium.reg16(text: 'Remarks', color: Color(0xFF7C7C7C)),
+                    medium.reg16(text: 'Remarks', color:colors.contactRemarkColor),
                     Gap(13.h),
                     medium.reg16(text: widget.remarks ?? ''),
                   ],
@@ -231,25 +234,25 @@ class _ContactdetailsState extends State<Contactdetails> {
                     onTap: () {
                       setState(() {
                         buttonvalue = 1;
-                        widget.selectedbutton!(buttonvalue!);
+                        widget.selectedButton!(buttonvalue!);
                       });
                     },
                     child: Container(
                       height: 46.66.h,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFF367B86)),
+                        border: Border.all(color: colors.primaryGreenColour),
                         borderRadius: BorderRadius.circular(52.w),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Image.asset('assets/images/phoneicon.png',
+                          SvgPicture.asset('assets/images/phoneicon.svg',
                               height: 14.66.h,
                               width: 14.66.w,
-                              color: Color(0xFF367B86)),
+                              color: colors.primaryGreenColour),
                           Gap(10.w),
                           semibold.reg16(
-                              text: 'Call', color: const Color(0xFF367B86))
+                              text: 'Call', color: colors.primaryGreenColour)
                         ],
                       ),
                     ))

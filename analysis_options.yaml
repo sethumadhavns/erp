@@ -1,4 +1,11 @@
 include: package:flutter_lints/flutter.yaml
 
+linter:
+  rules:
+    - camel_case_types
+    - camel_case_extensions
+    - camel_case_type_name
+
+
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

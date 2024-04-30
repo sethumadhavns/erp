@@ -1,53 +1,50 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/addbutton.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-class Chipbuttons extends StatefulWidget {
-  final List<String> chipnames;
-  final Function(int) buttonselected ;
-  const Chipbuttons({required this.chipnames,required this.buttonselected, super.key});
+class ChipButtons extends StatefulWidget {
+  final List<String> chipNames;
+  final Function(int) buttonSelected;
+  const ChipButtons(
+      {required this.chipNames, required this.buttonSelected, super.key});
 
   @override
-  State<Chipbuttons> createState() => _ChipbuttonsState();
+  State<ChipButtons> createState() => _ChipButtonsState();
 }
 
-class _ChipbuttonsState extends State<Chipbuttons> {
-  int? selectedbutton=-1;
+class _ChipButtonsState extends State<ChipButtons> {
+  int? selectedButton = -1;
   @override
   Widget build(BuildContext context) {
-
-    List<Widget> chips = widget.chipnames.map((title) {
-      int index = widget.chipnames.indexOf(title);
-      return GestureDetector(onTap: (){
-        setState(() {
-          selectedbutton=index;
-        });
-        widget.buttonselected(selectedbutton!);
-        
-      },
-        child: Chip(backgroundColor: selectedbutton==index?Colors.black:Colors.white,
-            shape:RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(29.w),
-                side: const BorderSide(color: Color(0xFFCFD9DB))),
-            label: medium.reg18(text: title, color:selectedbutton==index?Colors.white: Colors.black),
-            padding: EdgeInsets.symmetric(vertical:17.h ,horizontal:25.w),
-          
-            labelPadding:   const EdgeInsets.all(0),
-            
-          ),
+    List<Widget> chips = widget.chipNames.map((title) {
+      int index = widget.chipNames.indexOf(title);
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            selectedButton = index;
+          });
+          widget.buttonSelected(selectedButton!);
+        },
+        child: Chip(
+          backgroundColor:
+              selectedButton == index ? Colors.black : Colors.white,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(29.w),
+              side:  BorderSide(color:colors.chipButtonBorderColor)),
+          label: medium.reg18(
+              text: title,
+              color: selectedButton == index
+                  ? Colors.white
+                  : colors.chipButtonsBackgroundColour),
+          padding: EdgeInsets.symmetric(vertical: 17.h, horizontal: 25.w),
+          labelPadding: const EdgeInsets.all(0),
+        ),
       );
     }).toList();
 
-    return Wrap(spacing: 12.w,
-      children:chips 
-        
-      
-      );
-     
-
-    
+    return Wrap(spacing: 12.w, children: chips);
   }
 }
