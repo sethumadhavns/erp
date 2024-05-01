@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
-import 'package:erp_widget_packages/widgets/contactdetailsconditions.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
+import 'package:erp_widget_packages/widgets/contact_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,6 +23,10 @@ class ContactDetails extends StatefulWidget {
   final String? role;
   final String? validityDate;
   final Function(int)? selectedButton;
+  ///Widget is used in lead page to show details of the contacts in leads.
+  ///[name],[email],[landPhone] is set as required and others are displayed only when there is a value in arguments.
+  ///[call],[whatsapp] are bool and set to false as default,it shows the calling and whatsapp button when set to true.
+  ///[condition] are used to show chips which shows the contact conditions like new,followUpRequired etc.
   const ContactDetails(
       {required this.name,
       required this.email,
@@ -45,7 +49,7 @@ class ContactDetails extends StatefulWidget {
 }
 
 class _ContactDetailsState extends State<ContactDetails> {
-  int? buttonvalue = -1;
+  int? buttonValue = -1;
   @override
   Widget build(BuildContext context) {
     return Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(16.w)),
@@ -64,7 +68,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                         height: 44.35.h,
                         width: 44.35.w,
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: colors.imageIconBackgroundColour),
+                            shape: BoxShape.circle, color: colors.imageIconBackgroundColor),
                         child: IconButton(
                             onPressed: () {},
                             icon: SvgPicture.asset(
@@ -74,7 +78,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                             )),
                       ),
                       Gap(17.w),
-                      Column(//nameanddateandrole
+                      Column(//name and date and role
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -154,21 +158,21 @@ class _ContactDetailsState extends State<ContactDetails> {
               if (widget.whatsapp == true && widget.call == true)
               Gap(18.h),
               if (widget.whatsapp == true && widget.call == true)
-                Row(//callandwhatsapp
+                Row(//call and whatsapp
                   children: <Widget>[
                     Expanded(
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              buttonvalue = 1;
+                              buttonValue = 1;
 
-                              widget.selectedButton!(buttonvalue!);
+                              widget.selectedButton!(buttonValue!);
                             });
                           },
                           child: Container(
                             height: 46.66.h,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF367B86)),
+                              border: Border.all(color:colors.primaryGreenColor),
                               borderRadius: BorderRadius.circular(52.w),
                             ),
                             child: Row(
@@ -177,11 +181,11 @@ class _ContactDetailsState extends State<ContactDetails> {
                                 SvgPicture.asset(images.phone,
                                     height: 14.66.h,
                                     width: 14.66.w,
-                                    color: colors.primaryGreenColour),
+                                    color: colors.primaryGreenColor),
                                 Gap(10.w),
                                 semibold.reg16(
                                     text: 'Call',
-                                    color: colors.primaryGreenColour)
+                                    color: colors.primaryGreenColor)
                               ],
                             ),
                           )),
@@ -191,14 +195,14 @@ class _ContactDetailsState extends State<ContactDetails> {
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              buttonvalue = 2;
-                              widget.selectedButton!(buttonvalue!);
+                              buttonValue = 2;
+                              widget.selectedButton!(buttonValue!);
                             });
                           },
                           child: Container(
                             height: 46.66.h,
                             decoration: BoxDecoration(
-                              border: Border.all(color:colors.primaryGreenColour),
+                              border: Border.all(color:colors.primaryGreenColor),
                               borderRadius: BorderRadius.circular(52.w),
                             ),
                             child: Row(
@@ -207,11 +211,11 @@ class _ContactDetailsState extends State<ContactDetails> {
                               SvgPicture.asset(images.whatsapp,
                                     height: 14.66.h,
                                     width: 14.66.w,
-                                    color: colors.primaryGreenColour),
+                                    color: colors.primaryGreenColor),
                                 Gap(10.w),
                                 semibold.reg16(
                                     text: 'Whatsapp',
-                                    color: colors.primaryGreenColour)
+                                    color: colors.primaryGreenColor)
                               ],
                             ),
                           )),
@@ -230,29 +234,29 @@ class _ContactDetailsState extends State<ContactDetails> {
                 if (widget.call == true && widget.whatsapp == false)
                 Gap(18.h),
               if (widget.call == true && widget.whatsapp == false)
-                GestureDetector(//callonly
+                GestureDetector(//call only
                     onTap: () {
                       setState(() {
-                        buttonvalue = 1;
-                        widget.selectedButton!(buttonvalue!);
+                        buttonValue = 1;
+                        widget.selectedButton!(buttonValue!);
                       });
                     },
                     child: Container(
                       height: 46.66.h,
                       decoration: BoxDecoration(
-                        border: Border.all(color: colors.primaryGreenColour),
+                        border: Border.all(color: colors.primaryGreenColor),
                         borderRadius: BorderRadius.circular(52.w),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          SvgPicture.asset('assets/images/phoneicon.svg',
+                          SvgPicture.asset(images.phone,
                               height: 14.66.h,
                               width: 14.66.w,
-                              color: colors.primaryGreenColour),
+                              color: colors.primaryGreenColor),
                           Gap(10.w),
                           semibold.reg16(
-                              text: 'Call', color: colors.primaryGreenColour)
+                              text: 'Call', color: colors.primaryGreenColor)
                         ],
                       ),
                     ))

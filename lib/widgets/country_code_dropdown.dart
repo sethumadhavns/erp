@@ -1,21 +1,24 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class TextFieldWithCountryCode extends StatefulWidget {
+class CountryDropDown extends StatefulWidget {
   final String? title;
   final List<String>? countryCode;
-  const TextFieldWithCountryCode(
+  ///Dropdown Textfield with 2 textfield,one for selecting country code using [countryCode],
+  ///Other textfield to type the number
+  const CountryDropDown(
       {required this.countryCode, this.title, super.key});
 
   @override
-  State<TextFieldWithCountryCode> createState() =>
-      _TextFieldWithCountryCodeState();
+  State<CountryDropDown> createState() =>
+      _CountryDropDownState();
 }
 
-class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
+class _CountryDropDownState extends State<CountryDropDown> {
   TextEditingController countryDropDown = TextEditingController();
   ValueNotifier<List<String>> filteredItems = ValueNotifier<List<String>>([]);
   final GlobalKey<OverlayState> overlayKey = GlobalKey<OverlayState>();
@@ -26,10 +29,10 @@ class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
     super.initState();
     List<String> newFilteredItems = widget.countryCode ?? [];
     filteredItems.value = [...newFilteredItems];
-    countryDropDown.addListener(filteritems);
+    countryDropDown.addListener(filterItems);
   }
 
-  void filteritems() {
+  void filterItems() {
     String searchText = countryDropDown.text;
     setState(() {
       List<String> newFilteredItems = widget.countryCode!
@@ -39,7 +42,7 @@ class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
     });
   }
 
-  void showcontainer() {
+  void showContainer() {
     overlayEntry?.remove();
     overlayEntry = null;
     final RenderBox textFieldRenderBox =
@@ -119,7 +122,7 @@ class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
                     width: 83.w,
                     key: containerKey,
                     decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFC1C1C1)),
+                        border: Border.all(color: colors.containerBorderColor),
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(16.w),
                             bottomLeft: Radius.circular(16.w),
@@ -139,7 +142,7 @@ class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
                                 decoration:
                                     const InputDecoration(border: InputBorder.none),
                                 onTap: () {
-                                  showcontainer();
+                                  showContainer();
                                 },
                                 controller: countryDropDown,
                                 style: TextStyle(fontSize: 18.sp),
@@ -152,10 +155,10 @@ class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
                             child: Align(
                               alignment: Alignment.center,
                               child: SvgPicture.asset(
-                                'assets/images/dropdownarrow.svg',
+                                images.dropDownArrow,
                                 height: 6.h,
                                 width: 12.w,
-                                color: const Color(0xFF303030),
+                                color:colors.dropDownArrowColor ,
                               ),
                             ),
                           )
@@ -167,7 +170,7 @@ class _TextFieldWithCountryCodeState extends State<TextFieldWithCountryCode> {
                     child: Container(
                       height: 54.h,
                       decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xFFC1C1C1)),
+                          border: Border.all(color: colors.containerBorderColor),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.zero,
                               bottomLeft: Radius.zero,

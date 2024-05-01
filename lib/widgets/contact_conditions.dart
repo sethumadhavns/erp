@@ -1,10 +1,11 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 enum ContactConditions {
+  
   followUpRequiredOrange,
   newContact,
   validityDate,
@@ -16,7 +17,8 @@ enum ContactConditions {
   notPaid,
 }
 
-Widget conditions(ContactConditions? condition, String? validityDate) {
+Widget conditions(ContactConditions? condition, String? validityDate)
+ {
   switch (condition) {
     case ContactConditions.followUpRequiredOrange:
       return Chip(
@@ -51,7 +53,7 @@ Widget conditions(ContactConditions? condition, String? validityDate) {
         label: semibold.reg12(
             text: 'Validity Date:$validityDate',
             color:colors.validityDateChipText),
-        backgroundColor: colors.validityDateChipBackground.withOpacity(0.08),
+        backgroundColor: colors.primaryGreenColor.withOpacity(0.08),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
             side: const BorderSide(

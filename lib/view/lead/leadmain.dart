@@ -1,12 +1,13 @@
-import 'package:erp_widget_packages/widgets/clickableicons.dart';
+
 import 'package:erp_widget_packages/widgets/contactdetails.dart';
+import 'package:erp_widget_packages/widgets/icons.dart';
 import 'package:erp_widget_packages/widgets/searchwidget.dart';
 import 'package:erp_widget_packages/widgets/sortbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 
 class Leadmain extends StatefulWidget {
   const Leadmain({super.key});
@@ -121,7 +122,7 @@ class _LeadmainState extends State<Leadmain> {
               padding: EdgeInsets.only(left: 10.w, right: 10.w),
               child: Row(
                 children: <Widget>[
-                  ClickableIcons(
+                  IconsWidgets(
                       icon: 'iconone',
                       isSelected: selectedicon == 'iconone',
                       onIconSelected: (icon) {
@@ -130,7 +131,7 @@ class _LeadmainState extends State<Leadmain> {
                         });
                       }),
                   Gap(40.w),
-                  ClickableIcons(
+                  IconsWidgets(
                       icon: 'icontwo',
                       isSelected: selectedicon == 'icontwo',
                       onIconSelected: (icon) {
@@ -139,7 +140,7 @@ class _LeadmainState extends State<Leadmain> {
                         });
                       }),
                   Gap(40.w),
-                  ClickableIcons(
+                  IconsWidgets(
                       icon: 'iconthree',
                       isSelected: selectedicon == 'iconthree',
                       onIconSelected: (icon) {
@@ -148,7 +149,7 @@ class _LeadmainState extends State<Leadmain> {
                         });
                       }),
                   Gap(40.w),
-                  ClickableIcons(
+                  IconsWidgets(
                       icon: 'iconfour',
                       isSelected: selectedicon == 'iconfour',
                       onIconSelected: (icon) {

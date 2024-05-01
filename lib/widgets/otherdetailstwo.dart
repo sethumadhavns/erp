@@ -1,24 +1,26 @@
 // ignore_for_file: unnecessary_import
 
 import 'package:accordion/accordion.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 
-import 'package:erp_widget_packages/widgets/productdetails.dart';
-import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:erp_widget_packages/widgets/product_details.dart';
+import 'package:erp_widget_packages/widgets/dropdown.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class OtherDetailstwo extends StatefulWidget {
-  const OtherDetailstwo({super.key});
+class OtherDetailsTwo extends StatefulWidget {
+  ///In contact page ,when adding contact other details of contact is used.
+  ///[DropDown] and [CountryCodeDropDown] is used with entries
+  const OtherDetailsTwo({super.key});
 
   @override
-  State<OtherDetailstwo> createState() => _OtherDetailstwoState();
+  State<OtherDetailsTwo> createState() => _OtherDetailsTwoState();
 }
 
-class _OtherDetailstwoState extends State<OtherDetailstwo> {
+class _OtherDetailsTwoState extends State<OtherDetailsTwo> {
   @override
   Widget build(BuildContext context) {
     return Accordion(
@@ -31,13 +33,13 @@ class _OtherDetailstwoState extends State<OtherDetailstwo> {
           headerBackgroundColor: Colors.white,
           header: Row(children: [
             medium.reg20(
-                text: 'Payment Info', color: colors.primaryGreenColour),
+                text: 'Payment Info', color: colors.primaryGreenColor),
             Gap(184.91.w),
             SvgPicture.asset(
               images.dropDownArrow,
               height: 6.04.h,
               width: 12.09.h,
-              color: colors.primaryGreenColour,
+              color: colors.primaryGreenColor,
             )
           ]),
           content: const Align(
@@ -45,22 +47,22 @@ class _OtherDetailstwoState extends State<OtherDetailstwo> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  TextFieldAndHeading(
+                  DropDown(
                     title: 'Country',
                     dropDownEntries: [],
                   ),
-                  TextFieldAndHeading(
+                  DropDown(
                     title: 'Status',
                     dropDownEntries: [],
                   ),
-                  TextFieldAndHeading(
+                  DropDown(
                     title: 'City',
                     dropDownEntries: [],
                   ),
-                  TextFieldAndHeading(
+                  DropDown(
                     title: 'Address',
                   ),
-                  TextFieldAndHeading(
+                  DropDown(
                     title: 'Remarks',
                   ),
                 ]),

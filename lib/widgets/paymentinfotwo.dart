@@ -1,12 +1,14 @@
 import 'package:accordion/accordion.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
-import 'package:erp_widget_packages/widgets/productdetails.dart';
-import 'package:erp_widget_packages/widgets/textfieldandheading.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
+import 'package:erp_widget_packages/widgets/product_details.dart';
+import 'package:erp_widget_packages/widgets/dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class PaymentInfoTwo extends StatefulWidget {
+  ///contains [DropDown]
   const PaymentInfoTwo({super.key});
 
   @override
@@ -23,20 +25,20 @@ class _PaymentInfoTwoState extends State<PaymentInfoTwo> {
             isOpen: true,
             headerBackgroundColor: Colors.white,
             header: medium.reg20(
-                text: 'Payment Info', color: colors.primaryGreenColour),
-            rightIcon: Image.asset(
-              'assets/images/dropdownbutton.png',
+                text: 'Payment Info', color: colors.primaryGreenColor),
+            rightIcon: SvgPicture.asset(
+              images.dropDownArrow,
               height: 6.04.h,
               width: 12.09.w,
-              color: colors.primaryGreenColour,
+              color: colors.primaryGreenColor,
             ),
             content: Column(
               children: <Widget>[
-                const TextFieldAndHeading(title: 'Sales Person',dropDownEntries: [],),
+                const DropDown(title: 'Sales Person',dropDownEntries: [],),
                 Gap(20.h),
-               const TextFieldAndHeading(title: 'Status',dropDownEntries: [],),
+               const DropDown(title: 'Status',dropDownEntries: [],),
                 Gap(20.h),
-                const  TextFieldAndHeading(title: 'Remarks',height: 106, dropDownEntries: [],),
+                const  DropDown(title: 'Remarks',height: 106, dropDownEntries: [],),
                 
               ],
             ))

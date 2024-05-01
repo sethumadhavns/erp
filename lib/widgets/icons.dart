@@ -1,24 +1,28 @@
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ClickableIcons extends StatefulWidget {
+class IconsWidgets extends StatefulWidget {
   final String icon;
   final bool isSelected;
   final Function(String) onIconSelected;
-
-  const ClickableIcons(
+///this icons is clickable.It changes color on clicked.
+///[icon] will receive the string value of location of icon.
+////[isSelected]use to change the colors when clicked.
+///[onIconSelected] sends the icon which is clicked.
+///the value passed when calling [onIconSelected] is used to compare the value with selectedIcon variable which is defined when calling the [IconsWidgets]
+  const IconsWidgets(
       {required this.icon,
       required this.isSelected,
       required this.onIconSelected,
       super.key});
 
   @override
-  State<ClickableIcons> createState() => _ClickableIconsState();
+  State<IconsWidgets> createState() => _IconsWidgetsState();
 }
 
-class _ClickableIconsState extends State<ClickableIcons> {
+class _IconsWidgetsState extends State<IconsWidgets> {
   
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class _ClickableIconsState extends State<ClickableIcons> {
             width: 27.75.w,
             color: widget.isSelected
                 ?colors.clickableIconColor
-                :colors.defaultclickableIconColor,
+                :colors.defaultIconColor,
           ),
         ),
       ),

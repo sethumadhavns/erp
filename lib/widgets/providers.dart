@@ -8,7 +8,7 @@ class Providers extends ChangeNotifier {
   File? get image => _image;
   final ImagePicker imagePicker = ImagePicker();
 
-  Future<void> pickimage(ImageSource source) async {
+  Future<void> pickImage(ImageSource source) async {
     final pickedImage = await imagePicker.pickImage(source: source);
     if (pickedImage != null) {
       _image = File(pickedImage.path);

@@ -1,6 +1,6 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
-import 'package:erp_widget_packages/widgets/contactdetailsconditions.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
+import 'package:erp_widget_packages/widgets/contact_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,6 +20,12 @@ class EnquiryAccounts extends StatelessWidget {
   final String? validityDate;
  
 final ContactConditions? condition;
+///For enquiry page to display contacts.
+///[name2],[phoneNo],and[email] is displayed inside a colored container.
+///if [editButton] is set to true,it will appear.
+///[call] is also set to false and will appear only if it is set to true.
+///[condition] is given to show condition of the account.
+///[validityDate] is to show validity date up to.
 
 
   const EnquiryAccounts(
@@ -51,7 +57,7 @@ final ContactConditions? condition;
                   height: 44.35.h,
                   width: 44.35.w,
                   decoration:  BoxDecoration(
-                      shape: BoxShape.circle, color:colors.imageIconBackgroundColour),
+                      shape: BoxShape.circle, color:colors.imageIconBackgroundColor),
                   child: IconButton(
                       onPressed: () {},
                       icon: SvgPicture.asset(
@@ -103,7 +109,7 @@ final ContactConditions? condition;
             height: 72.h,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.w),
-                color: colors.primaryGreenColour.withOpacity(0.08)),
+                color: colors.primaryGreenColor.withOpacity(0.08)),
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 16.w),
               child: Column(
@@ -117,11 +123,11 @@ final ContactConditions? condition;
                             images.contactIcon,
                             height: 12.58.h,
                             width: 10.36.w,
-                            color: colors.primaryGreenColour,
+                            color: colors.primaryGreenColor,
                           ),
                           Gap(8.35.w),
                           medium.reg14(
-                              text: name2 ?? '', color: colors.primaryGreenColour)
+                              text: name2 ?? '', color: colors.primaryGreenColor)
                         ],
                       ),
                       if (phoneNo != null)
@@ -131,12 +137,12 @@ final ContactConditions? condition;
                               images.phone,
                               height: 11.76.h,
                               width: 11.76.w,
-                              color: colors.primaryGreenColour,
+                              color: colors.primaryGreenColor,
                             ),
                             Gap(6.23.w),
                             medium.reg14(
                                 text: phoneNo ?? '',
-                                color:colors.primaryGreenColour)
+                                color:colors.primaryGreenColor)
                           ],
                         )
                     ],
@@ -151,7 +157,7 @@ final ContactConditions? condition;
                       ),
                       Gap(8.w),
                       medium.reg14(
-                          text: email ?? '', color:colors.primaryGreenColour)
+                          text: email ?? '', color:colors.primaryGreenColor)
                     ],
                   )
                 ],
@@ -163,7 +169,7 @@ final ContactConditions? condition;
           Container(
             height: 46.66.h,
             decoration: BoxDecoration(
-                border: Border.all(color:colors.primaryGreenColour),
+                border: Border.all(color:colors.primaryGreenColor),
                 borderRadius: BorderRadius.circular(52.w)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -171,9 +177,9 @@ final ContactConditions? condition;
                 SvgPicture.asset(images.phone,
                     height: 14.66.h,
                     width: 14.66.w,
-                    color: colors.primaryGreenColour),
+                    color: colors.primaryGreenColor),
                 Gap(10.w),
-                semibold.reg16(text: 'Call', color: colors.primaryGreenColour)
+                semibold.reg16(text: 'Call', color: colors.primaryGreenColor)
               ],
             ),
           )

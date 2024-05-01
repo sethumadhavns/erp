@@ -1,28 +1,31 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 
-class RadioButtonWidget extends StatefulWidget {
+class RadioButton extends StatefulWidget {
   final String buttonTitle;
   final String optionNo;
   final ValueChanged<String> onChanged;
  final String? groupValue;
+ ///Radio Button with a [buttonTitle] to its left.
+ ///[optionNo] is given to each [RadioButton] you are using.
+ ///IN [onChanged] the [value] it return should assign to a variable and that value should be assign to [groupValue]
   
-  const RadioButtonWidget({
+  const RadioButton({
   required this.buttonTitle,required this.optionNo,
    required this.onChanged,
     required this.groupValue,
     super.key});
 
   @override
-  State<RadioButtonWidget> createState() => _RadioButtonWidgetState();
+  State<RadioButton> createState() => _RadioButtonState();
 }
 
-class _RadioButtonWidgetState extends State<RadioButtonWidget> {
+class _RadioButtonState extends State<RadioButton> {
   
   
 
@@ -35,7 +38,7 @@ class _RadioButtonWidgetState extends State<RadioButtonWidget> {
           visualDensity: const VisualDensity(
               horizontal: VisualDensity.minimumDensity,
               vertical: VisualDensity.minimumDensity),
-          activeColor: colors.primaryGreenColour,
+          activeColor: colors.primaryGreenColor,
           value: widget.optionNo,
           groupValue:  widget.groupValue,
           onChanged: (String? value) {

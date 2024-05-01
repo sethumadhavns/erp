@@ -1,18 +1,22 @@
 import 'dart:developer';
 
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-class TextFieldAndHeading extends StatefulWidget {
+class DropDown extends StatefulWidget {
   final String? title;
   final int? height;
   final String? hintText;
   final List<String>? dropDownEntries;
-  const TextFieldAndHeading(
+  ///Used for textfield inside a container,if [title] have value ,just title and textfield will appear.
+  ///[height] It is height of the container and has a default value,can be changed.
+  ///[hintText] and [dropDownEntries] are mutually exclusive,if one shows,other not.
+  
+  const DropDown(
       {this.title,
       this.height = 54,
       this.hintText,
@@ -20,10 +24,10 @@ class TextFieldAndHeading extends StatefulWidget {
       super.key});
 
   @override
-  State<TextFieldAndHeading> createState() => _TextFieldAndHeadingState();
+  State<DropDown> createState() => _DropDownState();
 }
 
-class _TextFieldAndHeadingState extends State<TextFieldAndHeading> {
+class _DropDownState extends State<DropDown> {
   TextEditingController text = TextEditingController();
   TextEditingController dropDown = TextEditingController();
   ValueNotifier<List<String>> filteredItems = ValueNotifier<List<String>>([]);
@@ -37,10 +41,10 @@ class _TextFieldAndHeadingState extends State<TextFieldAndHeading> {
     super.initState();
     List<String> newFilteredItems = widget.dropDownEntries ?? [];
     filteredItems.value = [...newFilteredItems];
-    dropDown.addListener(filteritems);
+    dropDown.addListener(filterItems);
   }
 
-  void filteritems() {
+  void filterItems() {
     String searchText = dropDown.text;
     setState(() {
       List<String> newFilteredItems = widget.dropDownEntries!
@@ -123,11 +127,11 @@ class _TextFieldAndHeadingState extends State<TextFieldAndHeading> {
               Gap(15.h),
             ],
             Container(
-              //the roundcontainer which has textfield
+              //the round container which has textfield
               key: containerKey,
               height: widget.height!.h,
               decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xFFC1C1C1)),
+                  border: Border.all(color: colors.containerBorderColor),
                   borderRadius: BorderRadius.circular(16.w)),
               child: Padding(
                 padding: EdgeInsets.only(
@@ -139,7 +143,7 @@ class _TextFieldAndHeadingState extends State<TextFieldAndHeading> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     if (widget.hintText == null) ...[
-                      medium.reg18(text: '-', color: const Color(0xFF909090)),
+                      medium.reg18(text: '-', color:colors.hyphenColor ),
                       Gap(10.w),
                     ],
                     if (widget.dropDownEntries == null) ...[
@@ -151,7 +155,7 @@ class _TextFieldAndHeadingState extends State<TextFieldAndHeading> {
                               hintStyle: TextStyle(
                                   fontFamily: 'GilroyRegular',
                                   fontSize: 18.sp,
-                                  color: const Color(0xFFA1A1A1))),
+                                  color: colors.hintTextColor)),
                         ),
                       ),
                       Gap(10.w),

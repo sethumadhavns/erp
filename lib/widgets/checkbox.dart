@@ -1,15 +1,17 @@
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckBoxWidget extends StatefulWidget {
-  final Color backGroundColour;
-  final Color colorAfterClicked;
-  final ValueChanged<bool> valueChanged;
+  final Color? backGroundColor;
+  final Color? colorAfterClicked;
+  final ValueChanged<bool>? valueChanged;
+  ///This is checkbox where [backGroundColor] and [colorAfterClicked] is given a default value.Can be changed.
+  ///[valueChanged] is used so you can track the [checkBoxState]
   const CheckBoxWidget(
-      {required this.backGroundColour,
-      required this.colorAfterClicked,
-      required this.valueChanged,
+      { this.backGroundColor=Colors.white,
+       this.colorAfterClicked=const Color(0xFF367B86),
+       required this.valueChanged,
       super.key});
 
   @override
@@ -17,14 +19,14 @@ class CheckBoxWidget extends StatefulWidget {
 }
 
 class _CheckBoxWidgetState extends State<CheckBoxWidget> {
-  bool isClicked = false;
+  bool checkBoxState = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
           setState(() {
-            isClicked = !isClicked;
-            widget.valueChanged(isClicked);
+            checkBoxState = !checkBoxState;
+            widget.valueChanged!(checkBoxState);
           });
         },
         child: Container(
@@ -32,18 +34,18 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
             width: 24.06.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3.54),
-              color: isClicked
+              color: checkBoxState
                   ? widget.colorAfterClicked
-                  : widget.backGroundColour,
-              border: Border.all(width: 0.89.w, color: colors.checkBoxBorderColour),
+                  : widget.backGroundColor,
+              border: Border.all(width: 0.89.w, color: colors.checkBoxBorderColor),
             ),
-            child: isClicked
+            child: checkBoxState
                 ? SizedBox(
                     height: 8.89.h,
                     width: 13.33.w,
-                    child: const Icon(
+                    child:  Icon(
                       Icons.check,
-                      size: 17,
+                      size: 17.sp,
                       color: Colors.white,
                     ),
                   )

@@ -1,5 +1,5 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +9,8 @@ class ProductOverview extends StatefulWidget {
   final String mainField;
   final List<String> subField;
   final List<String> imagePath;
+  ///In Product page an overview accordion,when its open many more accordion appears.
+  ///The inner accordion can be accessed by [subField]
   const ProductOverview(
       {required this.mainField,
       required this.subField,
@@ -41,12 +43,12 @@ class _ProductOverviewState extends State<ProductOverview> {
           headerPadding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 10.w),
           headerBackgroundColor: Colors.white,
           headerBackgroundColorOpened:
-              colors.primaryGreenColour.withOpacity(0.08),
+              colors.primaryGreenColor.withOpacity(0.08),
           rightIcon: null,
           header: Row(
             children: [
               medium.reg18(
-                  text: widget.mainField, color: colors.primaryGreenColour),
+                  text: widget.mainField, color: colors.primaryGreenColor),
               Gap(289.w),
               const Icon(Icons.arrow_drop_down)
             ],
@@ -72,15 +74,15 @@ class _ProductOverviewState extends State<ProductOverview> {
     );
   }
 
-  AccordionSection buildAccordionSection(String title, String imagepath) {
+  AccordionSection buildAccordionSection(String title, String imagePath) {
     return AccordionSection(
       rightIcon: Icon(Icons.keyboard_arrow_down,
-          color: colors.instructionTextColour, size: 25.w),
+          color: colors.instructionTextColor, size: 25.w),
       headerBackgroundColor: Colors.white,
       headerBorderRadius: 16.w,
       headerPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-      header: medium.reg18(text: title, color: colors.instructionTextColour),
-      content: Image.asset(imagepath),
+      header: medium.reg18(text: title, color: colors.instructionTextColor),
+      content: Image.asset(imagePath),
     );
   }
 }

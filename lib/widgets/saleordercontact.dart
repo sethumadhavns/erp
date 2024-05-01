@@ -1,21 +1,27 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
-import 'package:erp_widget_packages/widgets/contactdetailsconditions.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
+import 'package:erp_widget_packages/widgets/contact_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class SaleOrderContact extends StatelessWidget {
+  
   final String name;
+  
   final String code;
   final String date;
   final String price;
   final String? validityDate;
   final ContactConditions condition;
   final bool? editOption;
+  ///In Sale order page ,contains Contacts [name],[code],[price] and [date] and [condition].
+  ///[editOption] is set to default false,when it is set to true,it appears and more info icon disappear 
   const SaleOrderContact(
-      {required this.name,
+    
+      {
+        required this.name,
       required this.code,
       required this.date,
       required this.price,
@@ -29,11 +35,11 @@ class SaleOrderContact extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
-      //row containing 2 components thats should use spacebetween
+      //row containing 2 components thats should use space between
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          //column containg name,date and price
+          //column containing name,date and price
           children: [
             Row(
               //row containing name and code
@@ -44,7 +50,7 @@ class SaleOrderContact extends StatelessWidget {
               ],
             ),
             Gap(12.h),
-            medium.reg14(text: date, color: const Color(0xFF6F6F6F)),
+            medium.reg14(text: date, color: colors.quotationProductPriceColor),
             Gap(22.h),
             Row(
               //Row containing price and condition
@@ -61,7 +67,7 @@ class SaleOrderContact extends StatelessWidget {
           Row(
             children: [
               SvgPicture.asset(
-                'assets/images/edit.svg',
+                images.edit,
                 height: 18.3.h,
                 width: 18.3.w,
               ),
@@ -76,8 +82,8 @@ class SaleOrderContact extends StatelessWidget {
               icon: Container(
                 height: 49.88.h,
                 width: 49.88.w,
-                decoration: const BoxDecoration(
-                    color: Color(0xFFEDEDED), shape: BoxShape.circle),
+                decoration:  BoxDecoration(
+                    color:colors.circleContainerColor, shape: BoxShape.circle),
                 child: Center(
                     child: SvgPicture.asset(
                   images.arrowIcon,

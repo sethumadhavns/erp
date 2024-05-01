@@ -1,7 +1,7 @@
 import 'package:accordion/accordion.dart';
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
-import 'package:erp_widget_packages/widgets/productdetails.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
+import 'package:erp_widget_packages/widgets/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -12,7 +12,8 @@ class Inventory extends StatefulWidget {
   final String sale;
   final String reservedProducts;
   final String sellableQuantity;
-
+///widget for product page which show inventory details of product
+///all the value are displayed by controllers.
   const Inventory(
       {required this.onHand,
       required this.purchase,
@@ -39,13 +40,13 @@ class _InventoryState extends State<Inventory> {
                   headerBorderColor: Colors.white,
                   headerBackgroundColor: Colors.white,
                   headerBackgroundColorOpened:
-                      colors.primaryGreenColour.withOpacity(0.08),
+                      colors.primaryGreenColor.withOpacity(0.08),
                   rightIcon: Icon(Icons.keyboard_arrow_down,
-                      color: colors.primaryGreenColour, size: 25.w),
+                      color: colors.primaryGreenColor, size: 25.w),
                   headerPadding:
                       EdgeInsets.symmetric(vertical: 25.h, horizontal: 20.w),
                   header: medium.reg18(
-                      text: 'Inventory', color: colors.primaryGreenColour),
+                      text: 'Inventory', color: colors.primaryGreenColor),
                   content: Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(

@@ -1,12 +1,12 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_reo_fonts/easy_reo_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 KStyles regular =
-    KStyles(fontType: FontType.ttfFonts, fontFamily: 'GilroyReguar');
+    KStyles(fontType: FontType.ttfFonts, fontFamily: 'GilroyRegular');
 KStyles semibold =
     KStyles(fontType: FontType.ttfFonts, fontFamily: 'GilroySemibold');
 KStyles medium =
@@ -16,13 +16,15 @@ class ProductDetails extends StatefulWidget {
   final String productName;
   final String category;
   final String price;
-  final bool? availablity;
+  final bool? availability;
+  ///Contains [productName],its [category] and [price],
+  ///The Product availability is set to true,when its set to false it cant be accessed.
   const ProductDetails({
     super.key,
     required this.productName,
     required this.category,
     required this.price,
-    this.availablity = true,
+    this.availability = true,
   });
 
   @override
@@ -41,7 +43,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.w),
-              color: colors.boxColour,
+              color: colors.boxColor,
             ),
             height: 181.94.h,
             width: 181.49.w,
@@ -52,9 +54,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                     padding:
                         EdgeInsets.symmetric(vertical: 9.h, horizontal: 8.43.w),
                     child: CheckBoxWidget(
-                        backGroundColour: Colors.white,
+                        backGroundColor: Colors.white,
                         colorAfterClicked: Colors.black,
-                        valueChanged: (isselected) {}))
+                        valueChanged: (selected) {}))
               ],
             ),
           ),
@@ -68,7 +70,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           semibold.reg16(text:'\$ ${widget.price}', color: colors.productDetailsPrice)
         ],
       ),
-      if (widget.availablity == false)
+      if (widget.availability == false)
         Container(
           height: 266.94,
           width: 181.49,

@@ -1,6 +1,8 @@
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 
 class ToggleButton extends StatefulWidget {
+  ///toggle button with inactive and active track color fixed
   const ToggleButton({super.key});
 
   @override
@@ -16,9 +18,9 @@ class _ToggleButtonState extends State<ToggleButton> {
       thumbColor:const MaterialStatePropertyAll(Colors.white),
      
       value: light,
-      inactiveTrackColor: const Color(0xFFB1B1B1),
+      inactiveTrackColor: colors.toggleButtonInactiveColor,
       trackOutlineWidth: const MaterialStatePropertyAll(.1),
-      activeTrackColor: const Color(0xFF161616),
+      activeTrackColor: colors.toggleButtonActiveColor,
       trackOutlineColor: const MaterialStatePropertyAll(Colors.white),
       onChanged: (bool value) {
         

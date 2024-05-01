@@ -1,10 +1,11 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
-import 'package:erp_widget_packages/widgets/addbutton.dart';
+import 'package:erp_widget_packages/widgets/add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RectangleButtons extends StatelessWidget {
   final String name;
+  ///Rounded Rectangle button with color fixed,[name] can be used to change the child name of container button.
   const RectangleButtons({required this.name,super.key});
 
   @override
