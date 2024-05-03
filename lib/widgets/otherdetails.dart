@@ -7,7 +7,7 @@ import 'package:erp_widget_packages/widgets/country_code_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
+
 
 class OtherDetails extends StatefulWidget {
   ///For Lead page when adding lead,other details of lead is used.

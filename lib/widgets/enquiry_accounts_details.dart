@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class EnquiryAccounts extends StatelessWidget {
+class Details extends StatelessWidget {
   final String name;
   final String? code;
   final String? role;
@@ -17,18 +17,17 @@ class EnquiryAccounts extends StatelessWidget {
   final String? phoneNo;
   final bool? editButton;
   final bool? call;
-  final String? validityDate;
- 
-final ContactConditions? condition;
-///For enquiry page to display contacts.
-///[name2],[phoneNo],and[email] is displayed inside a colored container.
-///if [editButton] is set to true,it will appear.
-///[call] is also set to false and will appear only if it is set to true.
-///[condition] is given to show condition of the account.
-///[validityDate] is to show validity date up to.
 
+  final Widget? condition;
 
-  const EnquiryAccounts(
+  ///For enquiry page to display contacts.
+  ///[name2],[phoneNo],and[email] is displayed inside a colored container.
+  ///if [editButton] is set to true,it will appear.
+  ///[call] is also set to false and will appear only if it is set to true.
+  ///[condition] is given to show condition of the account.
+  ///[validityDate] is to show validity date up to.
+
+  const Details(
       {required this.name,
       this.code,
       this.role,
@@ -38,51 +37,61 @@ final ContactConditions? condition;
       this.phoneNo,
       this.editButton = false,
       this.call = false,
-      this.validityDate,
-      
       this.condition,
       super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      //main column
       children: <Widget>[
         Row(
+          //for split 2 components to space between
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+        
           children: <Widget>[
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              //for icon and a column contains name and date
+        
               children: <Widget>[
                 Container(
                   height: 44.35.h,
                   width: 44.35.w,
-                  decoration:  BoxDecoration(
-                      shape: BoxShape.circle, color:colors.imageIconBackgroundColor),
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        images.contactIcon,
-                        height: 15.43.h,
-                        width: 12.77.w,
-                      )),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: colors.imageIconBackgroundColor),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      images.contactIcon,
+                      height: 15.43.h,
+                      width: 12.77.w,
+                    ),
+                  ),
                 ),
                 Gap(17.w),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Column(crossAxisAlignment: CrossAxisAlignment.start,
+                  //column contain name and date
+        
                   children: <Widget>[
                     Row(
+                      //row contain name and code
                       children: <Widget>[
                         semibold.reg17(
                             text: name, color: colors.contactNameColor),
                         Gap(5.w),
-                        if (code != null&&editButton==false) medium.reg14(text: code!)
+                        if (code != null && editButton == false)
+                          medium.reg14(text: code!)
                       ],
                     ),
-                    Gap(9.h),
-                    if (role != null && editButton == false)
+                    if (role != null && editButton == false) ...[
+                      Gap(9.h),
                       medium.reg14(text: role!),
-                    if (date != null && editButton == false&&role==null)
-                      medium.reg14(text: date!)
+                    ],
+                    if (date != null &&
+                        editButton == false &&
+                        role == null) ...[Gap(9.h), medium.reg14(text: date!)]
                   ],
                 )
               ],
@@ -95,12 +104,9 @@ final ContactConditions? condition;
                     height: 17.58.h,
                     width: 17.58.w,
                   ))
-                  else 
-                  if(date!=null&&role!=null)
-                   medium.reg14(text: date!),
-                   if(condition!=null&&editButton==false)
-                   conditions(condition,validityDate)
-            
+            else if (date != null && role != null)
+              medium.reg14(text: date!),
+            if (condition != null && editButton == false) condition!
           ],
         ),
         Gap(20.h),
@@ -127,7 +133,8 @@ final ContactConditions? condition;
                           ),
                           Gap(8.35.w),
                           medium.reg14(
-                              text: name2 ?? '', color: colors.primaryGreenColor)
+                              text: name2 ?? '',
+                              color: colors.primaryGreenColor)
                         ],
                       ),
                       if (phoneNo != null)
@@ -142,13 +149,13 @@ final ContactConditions? condition;
                             Gap(6.23.w),
                             medium.reg14(
                                 text: phoneNo ?? '',
-                                color:colors.primaryGreenColor)
+                                color: colors.primaryGreenColor)
                           ],
                         )
                     ],
                   ),
                   Gap(6.h),
-                  Row(
+                  if(email!=null)Row(
                     children: <Widget>[
                       SvgPicture.asset(
                         images.email,
@@ -157,7 +164,7 @@ final ContactConditions? condition;
                       ),
                       Gap(8.w),
                       medium.reg14(
-                          text: email ?? '', color:colors.primaryGreenColor)
+                          text: email ?? '', color: colors.primaryGreenColor)
                     ],
                   )
                 ],
@@ -169,7 +176,7 @@ final ContactConditions? condition;
           Container(
             height: 46.66.h,
             decoration: BoxDecoration(
-                border: Border.all(color:colors.primaryGreenColor),
+                border: Border.all(color: colors.primaryGreenColor),
                 borderRadius: BorderRadius.circular(52.w)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

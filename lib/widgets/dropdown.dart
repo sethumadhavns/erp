@@ -12,10 +12,11 @@ class DropDown extends StatefulWidget {
   final int? height;
   final String? hintText;
   final List<String>? dropDownEntries;
+
   ///Used for textfield inside a container,if [title] have value ,just title and textfield will appear.
   ///[height] It is height of the container and has a default value,can be changed.
   ///[hintText] and [dropDownEntries] are mutually exclusive,if one shows,other not.
-  
+
   const DropDown(
       {this.title,
       this.height = 54,
@@ -64,17 +65,18 @@ class _DropDownState extends State<DropDown> {
     final textFieldPosition = textFieldRenderBox.localToGlobal(Offset.zero);
     final dropDownPosition =
         textFieldPosition.translate(0, textFieldSize.height);
+    double itemHeight = 50;
 
     overlayEntry = OverlayEntry(
         builder: (context) => Positioned(
               top: dropDownPosition.dy,
               child: Material(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200.h,
-                  child: ValueListenableBuilder<List<String>>(
-                    valueListenable: filteredItems,
-                    builder: (context, value, child) => ListView.builder(
+                child: ValueListenableBuilder<List<String>>(
+                  valueListenable: filteredItems,
+                  builder: (context, value, child) => SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: value.length * itemHeight,
+                    child: ListView.builder(
                         padding: const EdgeInsets.all(0),
                         itemCount: value.length,
                         itemBuilder: ((context, index) {
@@ -143,7 +145,7 @@ class _DropDownState extends State<DropDown> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     if (widget.hintText == null) ...[
-                      medium.reg18(text: '-', color:colors.hyphenColor ),
+                      medium.reg18(text: '-', color: colors.hyphenColor),
                       Gap(10.w),
                     ],
                     if (widget.dropDownEntries == null) ...[

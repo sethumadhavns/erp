@@ -17,7 +17,7 @@ class ContactDetails extends StatefulWidget {
   final String? mobileNo;
   final String? location;
   final String? remarks;
-  final ContactConditions? condition;
+  final Conditions? condition;
   final bool? call;
   final bool? whatsapp;
   final String? role;
@@ -92,7 +92,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                       ),
                     ],
                   ),
-                  conditions(widget.condition,widget.validityDate)//conditions
+                  conditions(widget.condition,)//conditions
                 ],
               ),
               Gap(26.4.h),

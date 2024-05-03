@@ -29,7 +29,7 @@ class AddQuotationProducts extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              medium.reg16(text: productName, color:colors.quotationProductNameColor ),
+              medium.reg16(text: productName, color:colors.mainNameColor ),
               Gap(12.h),
               medium.reg14(
                   text: '\$ $price/Peace', color:colors. quotationProductPriceColor),

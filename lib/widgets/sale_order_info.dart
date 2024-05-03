@@ -6,22 +6,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-class SaleOrderContact extends StatelessWidget {
-  
+class Info extends StatelessWidget {
   final String name;
-  
+
   final String code;
   final String date;
   final String price;
   final String? validityDate;
-  final ContactConditions condition;
+  final Widget condition;
   final bool? editOption;
+
   ///In Sale order page ,contains Contacts [name],[code],[price] and [date] and [condition].
-  ///[editOption] is set to default false,when it is set to true,it appears and more info icon disappear 
-  const SaleOrderContact(
-    
-      {
-        required this.name,
+  ///[editOption] is set to default false,when it is set to true,it appears and more info icon disappear
+  const Info(
+      {required this.name,
       required this.code,
       required this.date,
       required this.price,
@@ -45,7 +43,7 @@ class SaleOrderContact extends StatelessWidget {
               //row containing name and code
               children: [
                 medium.reg16(text: name),
-                Gap(10.w),
+                Gap(5.w),
                 medium.reg16(text: code),
               ],
             ),
@@ -57,7 +55,7 @@ class SaleOrderContact extends StatelessWidget {
               children: [
                 medium.reg18(text: price),
                 Gap(10.w),
-                conditions(condition, validityDate),
+                condition,
               ],
             )
           ],
@@ -65,14 +63,23 @@ class SaleOrderContact extends StatelessWidget {
         //2nd component of row
         if (editOption == true)
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SvgPicture.asset(
-                images.edit,
-                height: 18.3.h,
-                width: 18.3.w,
-              ),
-              Gap(19.78.w),
-              SvgPicture.asset(images.deleteBin)
+              IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    images.edit,
+                    height: 18.3.h,
+                    width: 18.3.w,
+                  )),
+              IconButton(
+                  padding: const EdgeInsets.all(0),
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    images.deleteBin,
+                    height: 19.37.h,
+                    width: 17.22.w,
+                  ))
             ],
           )
         else
@@ -82,8 +89,10 @@ class SaleOrderContact extends StatelessWidget {
               icon: Container(
                 height: 49.88.h,
                 width: 49.88.w,
-                decoration:  BoxDecoration(
-                    color:colors.circleContainerColor, shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                    border: Border.all(color: colors.roundIconBorder),
+                    color: Colors.white,
+                    shape: BoxShape.circle),
                 child: Center(
                     child: SvgPicture.asset(
                   images.arrowIcon,
