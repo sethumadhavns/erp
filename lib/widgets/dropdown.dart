@@ -88,9 +88,7 @@ class _DropDownState extends State<DropDown> {
                                 dropDown.text = value[index];
                               }
 
-                              setState(() {
-                                value = [];
-                              });
+                              value = [];
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -141,43 +139,57 @@ class _DropDownState extends State<DropDown> {
                   right: 20.w,
                 ),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    if (widget.hintText == null) ...[
-                      medium.reg18(text: '-', color: colors.hyphenColor),
-                      Gap(10.w),
-                    ],
-                    if (widget.dropDownEntries == null) ...[
-                      Flexible(
-                        child: TextField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: widget.hintText ?? '',
-                              hintStyle: TextStyle(
-                                  fontFamily: 'GilroyRegular',
-                                  fontSize: 18.sp,
-                                  color: colors.hintTextColor)),
-                        ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Row(
+                        children: [
+                          if (widget.hintText == null) ...[
+                            medium.reg18(text: '-', color: colors.hyphenColor),
+                            Gap(10.w),
+                          ],
+                          if (widget.dropDownEntries == null) ...[
+                           SizedBox(width: 300,
+                             child: TextField(
+                               textAlignVertical: TextAlignVertical.top,
+                               decoration: InputDecoration(
+                                   contentPadding: const EdgeInsets.all(0),
+                                   border: InputBorder.none,
+                                   hintText: widget.hintText ?? '',
+                                   hintStyle: TextStyle(
+                                       fontFamily: 'GilroyRegular',
+                                       fontSize: 18.sp,
+                                       color: colors.hintTextColor)),
+                             ),
+                           ),
+                            Gap(10.w),
+                          ],
+                          if (widget.dropDownEntries != null)
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Expanded(
+                                child: TextField(
+                                  textAlignVertical: TextAlignVertical.top,
+                                  decoration: const InputDecoration(
+                                      border: InputBorder.none),
+                                  controller: dropDown,
+                                  onTap: () {
+                                    showContainer();
+                                  },
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
-                      Gap(10.w),
-                    ],
-                    if (widget.dropDownEntries != null) ...[
-                      Expanded(
-                          child: TextField(
-                        decoration:
-                            const InputDecoration(border: InputBorder.none),
-                        controller: dropDown,
-                        onTap: () {
-                          showContainer();
-                        },
-                      )),
+                    ),
+                    if (widget.dropDownEntries != null)
                       SvgPicture.asset(
                         images.dropDownArrow,
-                        height: 6.h,
-                        width: 12.w,
+                        color: colors.dropDownArrowColor,
+                        height: 6.04.h,
+                        width: 12.09.w,
                       )
-                    ]
                   ],
                 ),
               ),

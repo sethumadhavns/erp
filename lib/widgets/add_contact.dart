@@ -2,6 +2,8 @@ import 'package:erp_widget_packages/widgets/dropdown.dart';
 import 'package:erp_widget_packages/widgets/country_code_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 class AddContact extends StatelessWidget {
   ///this widget contains text fields required to add contact 
@@ -15,16 +17,21 @@ class AddContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DropDown(title: 'Name',),
-        CountryDropDown(countryCode: [],title: 'Phone No',),
-         CountryDropDown(countryCode: [],title: 'Mobile No',),
-          CountryDropDown(countryCode: [],title: 'Whatsapp No',),
-          DropDown(title: 'Designation',),
-          DropDown(title: 'Remarks',height: 106
+        const DropDown(title: 'Name',),
+        Gap(20.h),
+        const CountryDropDown(countryCode: [],title: 'Phone No',),
+         Gap(20.h),
+         const CountryDropDown(countryCode: [],title: 'Mobile No',),
+          Gap(20.h),
+          const CountryDropDown(countryCode: [],title: 'Whatsapp No',),
+           Gap(20.h),
+          const DropDown(title: 'Designation',),
+           Gap(20.h),
+          const DropDown(title: 'Remarks',height: 106
           ,)
 
 

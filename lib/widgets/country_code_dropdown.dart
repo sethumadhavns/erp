@@ -8,14 +8,13 @@ import 'package:gap/gap.dart';
 class CountryDropDown extends StatefulWidget {
   final String? title;
   final List<String>? countryCode;
+
   ///Dropdown Textfield with 2 textfield,one for selecting country code using [countryCode],
   ///Other textfield to type the number
-  const CountryDropDown(
-      {required this.countryCode, this.title, super.key});
+  const CountryDropDown({required this.countryCode, this.title, super.key});
 
   @override
-  State<CountryDropDown> createState() =>
-      _CountryDropDownState();
+  State<CountryDropDown> createState() => _CountryDropDownState();
 }
 
 class _CountryDropDownState extends State<CountryDropDown> {
@@ -51,17 +50,17 @@ class _CountryDropDownState extends State<CountryDropDown> {
     final textFieldPosition = textFieldRenderBox.localToGlobal(Offset.zero);
     final dropDownPosition =
         textFieldPosition.translate(0, textFieldSize.height);
-
+    double itemHeight = 50;
     overlayEntry = OverlayEntry(
         builder: (context) => Positioned(
               top: dropDownPosition.dy,
               child: Material(
-                child: SizedBox(
-                  width: 83.w,
-                  height: 200.h,
-                  child: ValueListenableBuilder<List<String>>(
-                    valueListenable: filteredItems,
-                    builder: (context, value, child) => ListView.builder(
+                child: ValueListenableBuilder<List<String>>(
+                  valueListenable: filteredItems,
+                  builder: (context, value, child) => SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: value.length * itemHeight,
+                    child: ListView.builder(
                         padding: const EdgeInsets.all(0),
                         itemCount: value.length,
                         itemBuilder: ((context, index) {
@@ -73,9 +72,7 @@ class _CountryDropDownState extends State<CountryDropDown> {
                                 countryDropDown.text = value[index];
                               }
 
-                              
-                                value = [];
-                              
+                              value = [];
                             },
                             child: Container(
                               width: 83.w,
@@ -132,35 +129,23 @@ class _CountryDropDownState extends State<CountryDropDown> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Baseline(
-                            baseline: 25,
-                            baselineType: TextBaseline.alphabetic,
-                            child: SizedBox(
-                              width: 30.w,
-                              height: 40.h,
-                              child: TextField(
-                                decoration:
-                                    const InputDecoration(border: InputBorder.none),
-                                onTap: () {
-                                  showContainer();
-                                },
-                                controller: countryDropDown,
-                                style: TextStyle(fontSize: 18.sp),
-                              ),
+                          SizedBox(
+                            width: 30.w,
+                            child: TextField(
+                              decoration: const InputDecoration(
+                                  border: InputBorder.none),
+                              onTap: () {
+                                showContainer();
+                              },
+                              controller: countryDropDown,
+                              style: TextStyle(fontSize: 18.sp),
                             ),
                           ),
-                          Baseline(
-                            baseline: 40,
-                            baselineType: TextBaseline.alphabetic,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: SvgPicture.asset(
-                                images.dropDownArrow,
-                                height: 6.h,
-                                width: 12.w,
-                                color:colors.dropDownArrowColor ,
-                              ),
-                            ),
+                          SvgPicture.asset(
+                            images.dropDownArrow,
+                            height: 6.h,
+                            width: 12.w,
+                            color: colors.dropDownArrowColor,
                           )
                         ],
                       ),
@@ -170,15 +155,23 @@ class _CountryDropDownState extends State<CountryDropDown> {
                     child: Container(
                       height: 54.h,
                       decoration: BoxDecoration(
-                          border: Border.all(color: colors.containerBorderColor),
+                          border: Border(
+                              left:  BorderSide(color:colors.containerBorderColor,),
+                              right: BorderSide(
+                                  color: colors.containerBorderColor),
+                              top: BorderSide(
+                                  color: colors.containerBorderColor),
+                              bottom: BorderSide(
+                                  color: colors.containerBorderColor)),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.zero,
                               bottomLeft: Radius.zero,
                               topRight: Radius.circular(16.w),
                               bottomRight: Radius.circular(16.w))),
                       child: Padding(
-                        padding:  EdgeInsets.only(bottom: 7.h),
-                        child: const TextField(textAlignVertical: TextAlignVertical.center,
+                        padding: EdgeInsets.only(bottom: 7.h, left: 10.w),
+                        child: const TextField(
+                          textAlignVertical: TextAlignVertical.center,
                           decoration: InputDecoration(border: InputBorder.none),
                         ),
                       ),

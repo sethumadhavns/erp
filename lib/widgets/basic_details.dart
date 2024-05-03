@@ -37,7 +37,10 @@ class _BasicDetailsState extends State<BasicDetails> {
         child: Accordion(contentBorderColor: Colors.white, children: [
           AccordionSection(
               isOpen: true,
-              rightIcon:SvgPicture.asset(images.dropDownArrow,color:colors. primaryGreenColor,),
+              rightIcon: SvgPicture.asset(
+                images.dropDownArrow,
+                color: colors.primaryGreenColor,
+              ),
               headerBackgroundColor: Colors.white,
               header: medium.reg20(
                   text: 'Basic Details', color: colors.primaryGreenColor),
@@ -67,7 +70,7 @@ class _BasicDetailsState extends State<BasicDetails> {
                                 width: 78.5.w,
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color:colors. imageIconBackgroundColor),
+                                    color: colors.imageIconBackgroundColor),
                                 child: ClipOval(
                                   child: Image.file(
                                     imagePicker.image!,
@@ -97,9 +100,8 @@ class _BasicDetailsState extends State<BasicDetails> {
                                               children: [
                                                 GestureDetector(
                                                     onTap: () {
-                                                      imagePicker
-                                                          .pickImage(ImageSource
-                                                              .gallery);
+                                                      imagePicker.pickImage(
+                                                          ImageSource.gallery);
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
@@ -114,9 +116,8 @@ class _BasicDetailsState extends State<BasicDetails> {
                                               children: [
                                                 GestureDetector(
                                                     onTap: () {
-                                                      imagePicker
-                                                          .pickImage(ImageSource
-                                                              .camera);
+                                                      imagePicker.pickImage(
+                                                          ImageSource.camera);
                                                       Navigator.of(context)
                                                           .pop();
                                                     },
@@ -136,7 +137,7 @@ class _BasicDetailsState extends State<BasicDetails> {
                                 width: 124.w,
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                        color:colors. borderColorOfContainer),
+                                        color: colors.borderColorOfContainer),
                                     borderRadius: BorderRadius.circular(26.w)),
                                 child: Center(
                                     child: medium.reg14(
@@ -155,13 +156,11 @@ class _BasicDetailsState extends State<BasicDetails> {
                     ),
                   ),
                   Gap(20.h),
-                
                   const DropDown(
                     title: 'Name',
                     hintText: 'Name',
                   ),
                   Gap(15.h),
-
                   Gap(20.h),
                   medium.reg18(text: 'Type', color: colors.headingTextColor),
                   Gap(23.h),
@@ -196,15 +195,12 @@ class _BasicDetailsState extends State<BasicDetails> {
                     title: 'Company Name',
                     hintText: 'Company Name',
                   ),
-
                   Gap(20.h),
-
                   const DropDown(
                     title: 'Phone No',
                     hintText: 'Phone No',
                   ),
                   Gap(20.w),
-
                   const DropDown(
                     title: 'Email',
                     hintText: 'Email',

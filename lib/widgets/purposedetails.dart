@@ -6,6 +6,7 @@ import 'package:erp_widget_packages/widgets/radio_button.dart';
 import 'package:erp_widget_packages/widgets/dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class PurposeDetails extends StatefulWidget {
@@ -30,28 +31,30 @@ class _PurposeDetailsState extends State<PurposeDetails> {
         children: [
           AccordionSection(
               isOpen: true,
-              header: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+              rightIcon: SvgPicture.asset(
+                images.dropDownArrow,
+                color: colors.primaryGreenColor,
+              ), 
+              header:
                     medium.reg20(
                         text: 'Purpose Details',
                         color: colors.primaryGreenColor),
-                    Icon(Icons.arrow_drop_down,
-                        color: colors.primaryGreenColor),
-                  ]),
+                  headerPadding: const EdgeInsets.symmetric(horizontal: 15),  
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Row(
-                    children: [
-                      const Expanded(
-                          child: DropDown(
-                        title: 'Lead Source',
-                        dropDownEntries: [],
-                      )),
-                      Gap(10.w),
-                      const AddButton()
-                    ],
+                  Container(color: colors.primaryGreenColor.withOpacity(0.08),
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Expanded(
+                            child: DropDown(
+                          title: 'Lead Source',
+                          dropDownEntries: [],
+                        )),
+                        Gap(10.w),
+                        const AddButton(),
+                      ],
+                    ),
                   ),
                   Gap(20.h),
                   medium.reg18(

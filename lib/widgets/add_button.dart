@@ -23,6 +23,7 @@ class PackageImages {
   String whatsapp = 'assets/images/whatsapp.svg';
    String clock = 'assets/images/clock.svg';
    String tick= 'assets/images/roundTick.svg';
+   String contactTwo= 'assets/images/contactTwo.svg';
 }
 
 //colors used in this package
@@ -71,7 +72,7 @@ class PackageColors {
   Color hintTextColor = const Color(0xFFA1A1A1);
   Color hyphenColor = const Color(0xFF909090);
   Color searchHintText = const Color(0xFF939393);
-  Color searchIconColor = const Color(0xFF757575);
+  Color searchIconColor = const Color(0xFF777777);
   Color circleContainerColor = const Color(0xFFEDEDED);
   Color approvedChipBlue = const Color(0xFF3A7BB7);
   Color roundIconBorder =  const Color(0xFFDADADA);
@@ -86,7 +87,7 @@ class AddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    return IconButton(padding: const EdgeInsets.all(0),
         onPressed: () {},
         icon: Container(
           height: 47.14.h,

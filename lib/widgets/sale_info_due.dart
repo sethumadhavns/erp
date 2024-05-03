@@ -2,7 +2,6 @@
 
 import 'package:erp_widget_packages/erp_widget_packages.dart';
 import 'package:erp_widget_packages/widgets/add_button.dart';
-import 'package:erp_widget_packages/widgets/contact_conditions.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

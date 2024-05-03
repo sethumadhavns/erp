@@ -1,6 +1,5 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
 import 'package:erp_widget_packages/widgets/add_button.dart';
-import 'package:erp_widget_packages/widgets/contactdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

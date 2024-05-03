@@ -1,6 +1,5 @@
 import 'package:erp_widget_packages/erp_widget_packages.dart';
 import 'package:erp_widget_packages/widgets/add_button.dart';
-import 'package:erp_widget_packages/widgets/contact_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -126,7 +125,7 @@ class Details extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           SvgPicture.asset(
-                            images.contactIcon,
+                            images.contactTwo,
                             height: 12.58.h,
                             width: 10.36.w,
                             color: colors.primaryGreenColor,
