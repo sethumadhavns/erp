@@ -43,18 +43,16 @@ class _PurposeDetailsState extends State<PurposeDetails> {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(color: colors.primaryGreenColor.withOpacity(0.08),
-                    child: Row(crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        const Expanded(
-                            child: DropDown(
-                          title: 'Lead Source',
-                          dropDownEntries: [],
-                        )),
-                        Gap(10.w),
-                        const AddButton(),
-                      ],
-                    ),
+                  Row(crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      const Expanded(
+                          child: DropDown(
+                        title: 'Lead Source',
+                        dropDownEntries: [],
+                      )),
+                      Gap(10.w),
+                      const AddButton(),
+                    ],
                   ),
                   Gap(20.h),
                   medium.reg18(
@@ -105,7 +103,7 @@ class _PurposeDetailsState extends State<PurposeDetails> {
                   Gap(28.h),
                   const DropDown(
                     title: 'Service',
-                    dropDownEntries: [],
+                    dropDownEntries: ['Mobiles','Landlines','Computers'],
                   )
                 ],
               ))
